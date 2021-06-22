@@ -1,0 +1,25 @@
+require:
+  - rubocop-performance
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 2.7.2
+  SuggestExtensions: false
+  Exclude:
+    - node_modules/**/*
+    - bin/*
+    - config/**/*
+    - vendor/**/*
+    - db/**/*
+
+Layout/LineLength:
+  Max: 120
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Gemfile'
+    - 'spec/**/*.rb'
