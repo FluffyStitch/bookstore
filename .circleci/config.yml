@@ -19,11 +19,39 @@ jobs:
           name: lefthook
           command: bundle exec lefthook run pre-commit
 
+  testing:
+    docker:
+      - image: cimg/ruby:2.7.2-node
+      - image: circleci/postgres:13.1
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: task_manager_test
+          POSTGRES_PASSWORD: postgres
+    environment:
+      RAILS_ENV: test
+    steps:
+      - checkout
+      - ruby/install-deps
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+      - run:
+          name: run specs
+          command: bundle exec rspec
+
 workflows:
   version: 2
   lint_and_test:
     jobs:
       - lintering
-      # - testing:
-      #     requires:
-      #       - lintering
+      - testing:
+          requires:
+            - lintering

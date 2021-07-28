@@ -1,0 +1,37 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/home/dell/ruby/bookstore/spec/support/pages/home_page.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/dell/ruby/bookstore/spec/features/home_spec.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          2,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/home/dell/ruby/bookstore/app/controllers/home_controller.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null
+        ]
+      }
+    },
+    "timestamp": 1627505530
+  }
+}

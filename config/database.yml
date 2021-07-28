@@ -8,14 +8,14 @@ default: &default
 
 development:
   <<: *default
-  database: books_development
+  database: bookstore_development
 
 test:
   <<: *default
-  database: books_test
+  database: bookstore_test
 
 production:
   <<: *default
-  database: books_production
-  username: books
-  password: <%= ENV['BOOKS_DATABASE_PASSWORD'] %>
+  database: bookstore_production
+  username: bookstore
+  password: <%= ENV['BOOKSTORE_DATABASE_PASSWORD'] %>
