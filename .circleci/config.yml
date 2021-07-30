@@ -23,6 +23,10 @@ jobs:
     docker:
       - image: cimg/ruby:2.7.2-node
       - image: circleci/postgres:13.1
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: bookstore_test
+          POSTGRES_PASSWORD: postgres
     environment:
       RAILS_ENV: test
     steps:
