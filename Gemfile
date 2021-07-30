@@ -10,7 +10,6 @@ gem 'activeadmin', '~> 2.9.0'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise', '~> 4.8.0'
 gem 'haml-rails', '~> 2.0.1'
-gem 'jbuilder', '~> 2.7'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'pundit', '~> 2.1.0'
@@ -30,10 +29,10 @@ group :development do
   gem 'lefthook', '~> 0.7.2'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
-  gem 'rubocop', '~> 1.12.1'
-  gem 'rubocop-performance', '~> 1.10.2'
-  gem 'rubocop-rails', '~> 2.9.1'
-  gem 'rubocop-rspec', '~> 2.2.0'
+  gem 'rubocop', '~> 1.12.1', require: false
+  gem 'rubocop-performance', '~> 1.10.2', require: false
+  gem 'rubocop-rails', '~> 2.9.1', require: false
+  gem 'rubocop-rspec', '~> 2.2.0', require: false
   gem 'spring', '~> 2.1.1'
   gem 'web-console', '>= 4.1.0'
 end
