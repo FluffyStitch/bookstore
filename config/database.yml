@@ -3,19 +3,17 @@ default: &default
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: localhost
-  username: postgres
-  password: postgres
+  username: <%= Rails.application.credentials.database[:username] %>
+  password: <%= Rails.application.credentials.database[:password] %>
 
 development:
   <<: *default
-  database: books_development
+  database: bookstore_development
 
 test:
   <<: *default
-  database: books_test
+  database: bookstore_test
 
 production:
   <<: *default
-  database: books_production
-  username: books
-  password: <%= ENV['BOOKS_DATABASE_PASSWORD'] %>
+  database: bookstore_production
