@@ -10,7 +10,9 @@ gem 'activeadmin', '~> 2.9.0'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise', '~> 4.8.0'
 gem 'haml-rails', '~> 2.0.1'
+gem 'pagy', '~> 3.5'
 gem 'pg', '~> 1.1'
+gem 'pry'
 gem 'puma', '~> 5.0'
 gem 'pundit', '~> 2.1.0'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
@@ -39,6 +41,7 @@ end
 
 group :test do
   gem 'capybara', '~> 3.35.3'
+  gem 'factory_bot_rails', '~> 6.2.0'
   gem 'ffaker', '~> 2.18.0'
   gem 'shoulda-matchers', '~> 5.0.0'
   gem 'simplecov', '~> 0.21.2'

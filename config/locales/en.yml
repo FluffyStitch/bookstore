@@ -1,2 +1,41 @@
 en:
   title: Bookstore
+  start: Get Started
+  header:
+    home: Home
+    shop: Shop
+    log_out: Log out
+    account: My account
+  footer:
+    home: Home
+    shop: Shop
+    orders: Orders
+    settings: Settings
+  catalog: Catalog
+  email: prettybookstore1@gmail.com
+  number: (555)-555-5555
+  best: Best Sellers
+  sort:
+    newest: Newest first
+    popular: Popular first
+    price_asc: 'Price: Low to hight'
+    price_desc: 'Price: Hight to low'
+  all: All
+  view_more: View More
+  price: €%{money}
+  back: Back to results
+  book:
+    add: Add to Cart
+    description: Description
+    read_more: Read More
+    year: Year of publication
+    dimensions: Dimensions
+    dimensions_param: 'H:%{height}" x W: %{width}" x D: %{depth}'
+    materials: Materials
+  write_review: Write a Review
+  score: Score
+  reviews: Reviews
+  review:
+    title: Title
+    review: Review
+    post: Post

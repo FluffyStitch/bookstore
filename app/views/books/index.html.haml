@@ -1,0 +1,29 @@
+%main.container
+  %h1.general-title-margin= I18n.t(:catalog)
+  .hidden-xs.clearfix
+    .dropdowns.pull-right
+      .dropdown.width-240
+        %a.dropdown-toggle.lead.small{'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+          = @sort
+          %i.fa.fa-angle-down.dropdown-icon.pull-right
+        %ul.dropdown-menu
+          - BooksController::SORT.each_key do |key|
+            %li
+              %a{href: books_path(sort: key, filter: @filter)}= key
+    %ul.list-inline.pt-10.mb-25.mr-240
+      %li.mr-35
+        %a.filter-link{href: books_path(sort: @sort)}
+          = I18n.t(:all)
+          %span.badge.general-badge= Book.all.count
+      - Category.all.each do |category|
+        %li.mr-35
+          %a.filter-link{href: books_path(sort: @sort, filter: category)}
+            = category.name
+            %span.badge.general-badge= Book.where(category_id: category).count
+  .mb-120
+    .row
+      = render partial: 'books/book', collection: @books
+    .text-center
+      %button.btn.btn-primary= I18n.t(:view_more)
+    .text-center
+      != pagy_nav(@pagy)
