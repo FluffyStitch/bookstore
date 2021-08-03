@@ -1,13 +1,6 @@
 // Load variables
 
 @import "./variables";
-.max-lines {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 6;
-  -webkit-box-orient: vertical;
-}
 
 .navbar-default {
   box-shadow: 0 5px 18px 2px rgba(1, 1, 1, 0.1);

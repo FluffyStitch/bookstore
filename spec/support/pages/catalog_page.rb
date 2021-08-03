@@ -4,4 +4,6 @@ class Catalog < SitePrism::Page
   set_url '/books{?query*}'
 
   sections :books, Books, '.book'
+
+  element :view_more, '#load_more'
 end

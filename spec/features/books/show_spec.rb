@@ -22,6 +22,11 @@ RSpec.describe 'Book > Show', type: :feature, js: true do
       current_page.minus.click
       expect(current_page.price.text).to eq(I18n.t(:price, money: book.price))
     end
+
+    it 'does not minus' do
+      current_page.minus.click
+      expect(current_page.price.text).to eq(I18n.t(:price, money: book.price))
+    end
   end
 
   describe 'when click read more' do

@@ -1,7 +1,7 @@
 %main.container
   %a.general-back-link{href: books_path}
     %i.fa.fa-long-arrow-left.mr-15
-    = I18n.t(:back)
+    = t(:back)
   .row
     .col-sm-6
       .product-gallery
@@ -19,7 +19,7 @@
       %p.lead.small= @book.all_authors
       .row
         .col-xs-12.col-md-4
-          %p.h1.in-gold-500.mt-10= I18n.t(:price, money: @book.price)
+          %p.h1.in-gold-500.mt-10= t(:price, money: @book.price)
         .col-xs-5.col-md-3
           .input-group.general-position
             %a.input-link
@@ -28,27 +28,27 @@
             %a.input-link
               %i.fa.fa-plus.line-height-40
         .col-xs-7.col-md-5
-          %button.btn.btn-default.pull-right.general-position= I18n.t('book.add')
+          %button.btn.btn-default.pull-right.general-position= t('book.add')
       .general-info-wrap.divider-lg
-        %p= I18n.t('book.description')
+        %p= t('book.description')
         %p.lead.small.line-height-2
           .max-lines= @book.description
-          %a.in-gold-500.ml-10#read_more= I18n.t('book.read_more')
+          %a.in-gold-500.ml-10#read_more= t('book.read_more')
       .general-info-wrap.divider-lg
         .clearfix
-          %p.pull-left= I18n.t('book.year')
+          %p.pull-left= t('book.year')
           %p.lead.small.pull-right= @book.year_of_publication
       .general-info-wrap.divider-lg
         .clearfix
-          %p.pull-left= I18n.t('book.dimensions')
-          %p.lead.small.pull-right= I18n.t('book.dimensions_param', height: @book.height, width: @book.width, depth: @book.depth)
+          %p.pull-left= t('book.dimensions')
+          %p.lead.small.pull-right= t('book.dimensions_param', height: @book.height, width: @book.width, depth: @book.depth)
       .general-info-wrap.divider-lg
         .clearfix
-          %p.pull-left= I18n.t('book.materials')
+          %p.pull-left= t('book.materials')
           %p.lead.small.pull-right= @book.materials
   .mb-80
-    %h3= I18n.t(:write_review)
-    %p.general-info-text= I18n.t(:score)
+    %h3= t(:write_review)
+    %p.general-info-text= t(:score)
     .mb-15
       %i.fa.fa-star.rate-empty
       %i.fa.fa-star.rate-empty
@@ -59,15 +59,15 @@
       .col-md-8
         .mb-40
           .form-group
-            %label.control-label.input-label.in-grey-600{for: "title"}= I18n.t('review.title')
+            %label.control-label.input-label.in-grey-600{for: "title"}= t('review.title')
             %input#title.form-control{name:"title", type: "text"}
           .form-group
-            %label.control-label.input-label.in-grey-600{for: "review"}= I18n.t('review.review')
+            %label.control-label.input-label.in-grey-600{for: "review"}= t('review.review')
             %textarea#review.form-control{name:"review", type: "text"}
         .text-right
-          %button.btn.disabled.mb-20= I18n.t('review.post')
+          %button.btn.disabled.mb-20= t('review.post')
   .mb-80
-    %h3.in-gold-500.mb-25 #{I18n.t(:reviews)} (3)
+    %h3.in-gold-500.mb-25 #{t(:reviews)} (3)
     .general-message-wrap.divider-lg
       .clearfix
         %img.img-circle.logo-size.inlide-block.pull-left{src: "https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg"}

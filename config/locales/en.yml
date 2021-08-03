@@ -39,3 +39,5 @@ en:
     title: Title
     review: Review
     post: Post
+  filter_by: Filter by category
+  sort_by: Sort by

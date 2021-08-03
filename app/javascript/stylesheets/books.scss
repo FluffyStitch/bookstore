@@ -1,0 +1,12 @@
+.max-lines {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+}
+
+.count {
+  margin-left: 5px;
+  padding-top: 5px;
+}

@@ -1,0 +1,2 @@
+$('#books_wrapper').append('#{j(render partial: 'books/books', locals: { presenter: @presenter })}');
+$('#load_more').html('#{j(render partial: 'books/load_more', locals: { pagy: @pagy })}');
