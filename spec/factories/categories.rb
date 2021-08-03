@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :category do
-    name { ['Mobile development', 'Photo', 'Web design', 'Web development'].sample }
+    name { FFaker::Book.genre }
   end
 end

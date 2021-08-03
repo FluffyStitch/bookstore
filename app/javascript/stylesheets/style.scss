@@ -1,6 +1,6 @@
-$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
-
-@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import 'custom/variables';
+@import 'bootstrap';
 @import "custom/theme";
 @import "bookstore/general";
 @import "bookstore/utils/helpers";
+@import 'books';

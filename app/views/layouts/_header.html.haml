@@ -19,25 +19,25 @@
           %span{'aria-hidden': "true"} &times;
         %ul.nav.navbar-nav
           %li
-            %a{href: root_path}= t('header.home')
+            = link_to t('header.home'), root_path
           %li
             %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"}= t('header.shop')
             %ul#menu.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
-              - Category.all.each do |category|
+              - categories.each do |category|
                 %li
-                  %a.collapse-link{href: books_path(filter: category)}= category.name
+                  = link_to category.name, books_path(filter: category)
           %li
             %a{href: "#"}= t('header.account')
       .hidden-xs
         %ul.nav.navbar-nav
           %li
-            %a{href: root_path}= t('header.home')
+            = link_to t('header.home'), root_path
           %li.dropdown
             %a.dropdown-toggle{'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}= t('header.shop')
             %ul.dropdown-menu
-              - Category.all.each do |category|
+              - categories.each do |category|
                 %li
-                  %a{href: books_path(filter: category)}= category.name
+                  = link_to category.name, books_path(filter: category)
               %li.divider{role: "separator"}
               %li
                 %a{href: "#"}= t('header.log_out')

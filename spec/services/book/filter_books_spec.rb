@@ -14,7 +14,7 @@ RSpec.describe Book::FilterBooks do
 
       it 'displays all books with sort' do
         sort_books = books.sort_by(&:created_at).reverse
-        expect(filter_books.decorated_collection.map(&:object)).to eq(sort_books)
+        expect(filter_books).to eq(sort_books)
       end
     end
 
@@ -23,7 +23,7 @@ RSpec.describe Book::FilterBooks do
 
       it 'displays all books with sort' do
         sort_books = books.sort_by(&:created_at)
-        expect(filter_books.decorated_collection.map(&:object)).to eq(sort_books)
+        expect(filter_books).to eq(sort_books)
       end
     end
 
@@ -32,7 +32,7 @@ RSpec.describe Book::FilterBooks do
 
       it 'displays all books with sort' do
         sort_books = books.sort_by(&:price)
-        expect(filter_books.decorated_collection.map(&:object)).to eq(sort_books)
+        expect(filter_books).to eq(sort_books)
       end
     end
 
@@ -41,7 +41,7 @@ RSpec.describe Book::FilterBooks do
 
       it 'displays all books with sort' do
         sort_books = books.sort_by(&:price).reverse
-        expect(filter_books.decorated_collection.map(&:object)).to eq(sort_books)
+        expect(filter_books).to eq(sort_books)
       end
     end
   end
@@ -51,8 +51,7 @@ RSpec.describe Book::FilterBooks do
       let(:params) { { filter: categories[0].id } }
 
       it 'displays books' do
-        # books_with_first_category.each { |book| expect(current_page).to have_content(book.title) }
-        expect(filter_books.decorated_collection.map(&:object)).to match_array(books_with_first_category)
+        expect(filter_books).to match_array(books_with_first_category)
       end
     end
 
@@ -60,8 +59,7 @@ RSpec.describe Book::FilterBooks do
       let(:params) { { filter: categories[1].id } }
 
       it 'displays books' do
-        # books_with_second_category.each { |book| expect(current_page).to have_content(book.title) }
-        expect(filter_books.decorated_collection.map(&:object)).to match_array(books_with_second_category)
+        expect(filter_books).to match_array(books_with_second_category)
       end
     end
   end

@@ -12,30 +12,30 @@
               %a{href: books_path(sort: key, filter: @presenter.current_filter)}= key
     %ul.list-inline.pt-10.mb-25.mr-240
       %li.mr-35
-        %a.filter-link{href: books_path(sort: @presenter.current_sort)}
+        %a.filter-link{href: books_path(sort: @presenter.current_sort), class: @presenter.default_choosen_category_class}
           = t(:all)
-          %span.badge.general-badge.count= Book.all.count
-      - @presenter.categories.each do |category|
+          %span.badge.general-badge.count= @presenter.books_count
+      - categories.each do |category|
         %li.mr-35
-          %a.filter-link{href: books_path(sort: @presenter.current_sort, filter: category)}
+          %a.filter-link{href: books_path(sort: @presenter.current_sort, filter: category), class: @presenter.choosen_category_class(category)}
             = category.name
-            %span.badge.general-badge.count= Book.where(category_id: category).count
+            %span.badge.general-badge.count= @presenter.books_count(category: category)
   .dropdowns.mb-25.visible-xs
     %p.lead.small.mb-10= t(:filter_by)
     .dropdown
       %a.dropdown-toggle.lead.small{'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
-        = @presenter.current_filter ? Category.find(@presenter.current_filter).name : t(:all)
+        = @presenter.current_category_name
         %i.fa.fa-angle-down.dropdown-icon.pull-right
       %ul.dropdown-menu
         %li.mr-35
           %a.filter-link{href: books_path(sort: @presenter.current_sort)}
             = t(:all)
-            %span.badge.general-badge.count= Book.all.count
-        - @presenter.categories.each do |category|
+            %span.badge.general-badge.count= @presenter.books_count
+        - categories.each do |category|
           %li.mr-35
             %a.filter-link{href: books_path(sort: @presenter.current_sort, filter: category)}
               = category.name
-              %span.badge.general-badge.count= Book.where(category_id: category).count
+              %span.badge.general-badge.count= @presenter.books_count(category: category)
     %p.lead.small.mb-10= t(:sort_by)
     .dropdown
       %a.dropdown-toggle.lead.small{'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
@@ -49,5 +49,5 @@
     .row#books_wrapper
       = render partial: 'books/books', locals: { presenter: @presenter }
     .text-center
-      %button.btn.btn-primary#load_more
+      #load_more
         = render partial: 'books/load_more', locals: { pagy: @pagy }
