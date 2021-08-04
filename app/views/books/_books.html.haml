@@ -1,0 +1,3 @@
+- presenter.books.each_with_index do |book, index|
+  = presenter.clearfix(index)
+  = render partial: 'books/book', locals: { book: book }

@@ -24,3 +24,6 @@ Metrics/BlockLength:
   Exclude:
     - 'Gemfile'
     - 'spec/**/*.rb'
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 7
