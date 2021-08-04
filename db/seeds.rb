@@ -2,8 +2,10 @@ require 'ffaker'
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if AdminUser.count.zero?
 
-categories = ['Mobile development', 'Photo', 'Web design', 'Web development'].map { |category_name| Category.create(name: category_name) }
-authors = Array.new(5) { Author.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name) }
+categories = ['Mobile development', 'Photo', 'Web design', 'Web development'].map do |category_name|
+  Category.find_or_create_by(name: category_name)
+end
+authors = Array.new(5) { Author.create!(first_name: FFaker::Name.first_name, last_name: FFaker::Name.last_name) }
 16.times do
   Book.create(title: FFaker::Book.title,
               price: rand(200.0),
