@@ -17,5 +17,5 @@ authors = Array.new(5) { Author.create!(first_name: FFaker::Name.first_name, sec
               depth: rand(10.0),
               materials: FFaker::AnimalUS.common_name,
               category: categories.sample,
-              authors: authors.sample(1..3))
+              authors: authors.sample(rand(1..3)))
 end
