@@ -5,7 +5,7 @@ AdminUser.create!(email: 'admin@example.com', password: 'password', password_con
 categories = ['Mobile development', 'Photo', 'Web design', 'Web development'].map do |category_name|
   Category.find_or_create_by(name: category_name)
 end
-authors = Array.new(5) { Author.create!(first_name: FFaker::Name.first_name, last_name: FFaker::Name.last_name) }
+authors = Array.new(5) { Author.create!(first_name: FFaker::Name.first_name, second_name: FFaker::Name.last_name) }
 16.times do
   Book.create(title: FFaker::Book.title,
               price: rand(200.0),
