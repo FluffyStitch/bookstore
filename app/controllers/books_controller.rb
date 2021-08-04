@@ -10,7 +10,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find_by(id: params[:id])&.decorate
-    redirect_to root_path, alert: 'Book not found!' unless @book
+    redirect_to root_path, alert: I18n.t(:book_not_found) unless @book
   end
 
   private

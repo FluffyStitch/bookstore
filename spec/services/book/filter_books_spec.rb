@@ -10,7 +10,7 @@ RSpec.describe Book::FilterBooks do
 
   describe 'when displays books with sort' do
     describe "when displays with 'Newest first' sort" do
-      let(:params) { { sort: I18n.t('sort.newest') } }
+      let(:params) { { sort: :newest } }
 
       it 'displays all books with sort' do
         sort_books = books.sort_by(&:created_at).reverse
@@ -19,7 +19,7 @@ RSpec.describe Book::FilterBooks do
     end
 
     describe "when displays with 'Popular first' sort" do
-      let(:params) { { sort: I18n.t('sort.popular') } }
+      let(:params) { { sort: :popular } }
 
       it 'displays all books with sort' do
         sort_books = books.sort_by(&:created_at)
@@ -28,7 +28,7 @@ RSpec.describe Book::FilterBooks do
     end
 
     describe "when displays with 'Price: Low to hight' sort" do
-      let(:params) { { sort: I18n.t('sort.price_asc') } }
+      let(:params) { { sort: :price_asc } }
 
       it 'displays all books with sort' do
         sort_books = books.sort_by(&:price)
@@ -37,7 +37,7 @@ RSpec.describe Book::FilterBooks do
     end
 
     describe "when displays with 'Price: Hight to low' sort" do
-      let(:params) { { sort: I18n.t('sort.price_desc') } }
+      let(:params) { { sort: :price_desc } }
 
       it 'displays all books with sort' do
         sort_books = books.sort_by(&:price).reverse

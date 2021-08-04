@@ -1,6 +1,6 @@
 require 'ffaker'
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if AdminUser.all.count == 0
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if AdminUser.count.zero?
 
 categories = ['Mobile development', 'Photo', 'Web design', 'Web development'].map { |category_name| Category.create(name: category_name) }
 authors = Array.new(5) { Author.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name) }

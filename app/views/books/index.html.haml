@@ -4,12 +4,12 @@
     .dropdowns.pull-right
       .dropdown.width-240
         %a.dropdown-toggle.lead.small{'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
-          = @presenter.current_sort
+          = @presenter.current_sort_name
           %i.fa.fa-angle-down.dropdown-icon.pull-right
         %ul.dropdown-menu
           - @presenter.sort_keys.each_key do |key|
             %li
-              %a{href: books_path(sort: key, filter: @presenter.current_filter)}= key
+              %a{href: books_path(sort: key, filter: @presenter.current_filter)}= t("sort.#{key}")
     %ul.list-inline.pt-10.mb-25.mr-240
       %li.mr-35
         %a.filter-link{href: books_path(sort: @presenter.current_sort), class: @presenter.default_choosen_category_class}
@@ -39,12 +39,12 @@
     %p.lead.small.mb-10= t(:sort_by)
     .dropdown
       %a.dropdown-toggle.lead.small{'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
-        = @presenter.current_sort
+        = @presenter.current_sort_name
         %i.fa.fa-angle-down.dropdown-icon.pull-right
       %ul.dropdown-menu
         - @presenter.sort_keys.each_key do |key|
           %li
-            %a{href: books_path(sort: key, filter: @presenter.current_filter)}= key
+            %a{href: books_path(sort: key, filter: @presenter.current_filter)}= t("sort.#{key}")
   .mb-120
     .row#books_wrapper
       = render partial: 'books/books', locals: { presenter: @presenter }

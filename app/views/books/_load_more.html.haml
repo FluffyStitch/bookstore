@@ -1,1 +1,2 @@
-= pagy_next_link(pagy, t(:view_more), "class='btn btn-primary'").html_safe
+- if pagy.next.present?
+  = pagy_next_link(pagy, t(:view_more), "class='btn btn-primary'").html_safe

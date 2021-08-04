@@ -43,3 +43,4 @@ en:
     post: Post
   filter_by: Filter by category
   sort_by: Sort by
+  book_not_found: Book not found!

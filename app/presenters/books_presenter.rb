@@ -20,7 +20,7 @@ class BooksPresenter < ApplicationPresenter
   end
 
   def current_sort
-    @params[:sort] || I18n.t('sort.title_asc')
+    @params[:sort]&.to_sym || :title_asc
   end
 
   def current_filter
@@ -41,6 +41,10 @@ class BooksPresenter < ApplicationPresenter
 
   def books_count(**options)
     Book.where(options).count
+  end
+
+  def current_sort_name
+    I18n.t("sort.#{current_sort}")
   end
 
   def current_category_name
