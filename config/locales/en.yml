@@ -44,3 +44,21 @@ en:
   filter_by: Filter by category
   sort_by: Sort by
   book_not_found: Book not found!
+  log_in: Log In
+  sign_up: Sign Up
+  or: or
+  new_password: Set new password
+  change: Change
+  forgot_password: Forgot your password?
+  send_email: We'll email you instructions on how to reset it
+  email_instructions: Email Instructions
+  cancel: Cancel
+  have_account: Have an Account?
+  not_have_account: Don’t have an Account?
+  remember: Remember me
+
+  placeholder:
+    password: Password
+    new_password: Type a new Password
+    confirm_password: Confirm Password
+    enter_email: Enter Email
