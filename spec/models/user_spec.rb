@@ -15,6 +15,8 @@ RSpec.describe User, type: :model do
   it { is_expected.to have_db_index(:email) }
   it { is_expected.to have_db_index(:reset_password_token) }
   it { is_expected.to validate_presence_of(:email) }
+  it { is_expected.to have_one(:billing_address).dependent(:destroy) }
+  it { is_expected.to have_one(:shipping_address).dependent(:destroy) }
 
   describe 'when params is valid' do
     let(:email) { FFaker::Internet.email }

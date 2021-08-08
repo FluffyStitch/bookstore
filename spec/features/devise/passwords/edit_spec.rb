@@ -30,7 +30,7 @@ RSpec.describe 'Edit Password', type: :feature, js: true do
       let(:password_confirmation) { password }
 
       it 'success' do
-        expect(current_page).to have_content 'Your password has been changed successfully.'
+        expect(current_page).to have_content(I18n.t('devise.passwords.updated'))
       end
     end
 
@@ -38,7 +38,8 @@ RSpec.describe 'Edit Password', type: :feature, js: true do
       let(:password_confirmation) { attributes_for(:user)[:password] }
 
       it 'failed' do
-        expect(current_page).to have_content "doesn't match"
+        expect(current_page).to have_content(I18n.t('errors.messages.confirmation',
+                                                    attribute: I18n.t('placeholder.password')))
       end
     end
   end

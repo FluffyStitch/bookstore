@@ -7,5 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :omniauthable, omniauth_providers: [:github]
 
+  has_one :billing_address, class_name: 'BillingAddress', dependent: :destroy
+  has_one :shipping_address, class_name: 'ShippingAddress', dependent: :destroy
+
   validates :password, format: { with: PASSWORD_REGEX }, if: :password_required?
 end

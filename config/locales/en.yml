@@ -63,6 +63,7 @@ en:
     new_password: Type a new Password
     confirm_password: Confirm Password
     enter_email: Enter Email
+    old_password: Old Password
   messages:
     confirmation_instructions: |
       Welcome %{email}!
@@ -77,3 +78,25 @@ en:
     reset_password_message: |
       If you didn't request this, please ignore this email.
       Your password won't change until you access the link above and create a new one.
+  settings: Settings
+  address_label: Address
+  privacy: Privacy
+  save: Save
+  address:
+    billing: Billing Address
+    shipping: Shipping Address
+    first_name: First Name
+    last_name: Last Name
+    address: Address
+    city: City
+    zip: Zip
+    country: Select a country
+    phone: Example +355 66 123 4567
+  address_updated: Address successfully updated
+  address_class:
+    billing: BillingAddress
+    shipping: ShippingAddress
+  email_name: Email
+  remove_account: Remove account
+  understand: I understand that all data will be lost
+  please_remove_account: Please Remove My Account

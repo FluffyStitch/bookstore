@@ -44,10 +44,14 @@
               - categories.each do |category|
                 %li
                   = link_to category.name, books_path(filter: category)
-              %li.divider{role: "separator"}
             - if user_signed_in?
               %li
-                = link_to t('header.log_out'), destroy_user_session_path, method: :delete
+                %a.dropdown-toggle{'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+                  = t('header.account')
+                %ul.dropdown-menu
+                  %li= link_to 'Settings', edit_user_registration_path
+                  %li.divider{role: "separator"}
+                  %li= link_to t('header.log_out'), destroy_user_session_path, method: :delete
             - else
               %li
                 = link_to t(:log_in), new_user_session_path

@@ -1,26 +1,51 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :email, required: true, autofocus: true
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      %p
-        Currently waiting confirmation for: #{resource.unconfirmed_email}
-    = f.input :password,                                     |
-      hint: "leave it blank if you don't want to change it", |
-      required: false,                                       |
-      input_html: { autocomplete: "new-password" }           |
-    = f.input :password_confirmation,              |
-      required: false,                             |
-      input_html: { autocomplete: "new-password" } |
-    = f.input :current_password,                                     |
-      hint: "we need your current password to confirm your changes", |
-      required: true,                                                |
-      input_html: { autocomplete: "current-password" }               |
-  .form-actions
-    = f.button :submit, "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+%main.container
+  - presenter = UserPresenter.new(current_user)
+  %h1.general-title-margin= t(:settings)
+  %ul.nav.clearfix.mb-20{role: "tablist"}
+    %li.tab-item.active{role: "presentation"}
+      %a.tab-link{href: "#address", 'aria-controls': "address", role: "tab", 'data-toggle': "tab"}
+        = t(:address_label)
+    %li.tab-item{role: "presentation"}
+      %a.tab-link{href: "#privacy", 'aria-controls': "privacy", role: "tab", 'data-toggle': "tab"}
+        = t(:privacy)
+  .tab-content
+    #address.tab-pane.fade.in.active.general-main-wrap{role: "tabpanel"}
+      .hidden-xs.hidden-sm
+        .row
+          .col-md-5
+            %h3.general-subtitle.mt-0= t('address.billing')
+          .col-md-5.col-md-offset-1
+            %h3.general-subtitle.mt-0= t('address.shipping')
+      .row
+        .col-md-5.mb-40#billing_address
+          = render partial: 'addresses/address', locals: { address: presenter.billing_address }
+        .col-md-5.col-md-offset-1.mb-25#shipping_address
+          = render partial: 'addresses/address', locals: { address: presenter.shipping_address }
+    #privacy.tab-pane.fade{role: "tabpanel"}
+      .row.mb-60
+        .col-sm-5
+          %p.in-gold-500.font-18.mb-25= t(:email_name)
+          = simple_form_for(resource, url: registration_path(resource), method: :put, defaults: { input_html: { class: 'form-control' } }, html: { id: 'email-form' }) do |f|
+            .mb-35
+              = f.input :email, placeholder: t('placeholder.enter_email')
+            .general-text-align
+              = f.submit t(:save), class: 'btn btn-default mb-35'
+        .col-sm-5.col-sm-offset-1
+          %p.in-gold-500.font-18.mb-25= t('devise.password')
+          = simple_form_for(resource, url: registration_path(resource), method: :put, class: 'general-form-md divider-lg-bottom pb-25', defaults: { input_html: { class: 'form-control mb-30' } }, html: { id: 'password-form' }) do |f|
+            = f.input :current_password, placeholder: t('placeholder.old_password')
+            = f.input :password, placeholder: t('placeholder.new_password')
+            = f.input :password_confirmation, placeholder: t('placeholder.confirm_password')
+            .general-text-align
+              = f.submit t(:save), class: 'btn btn-default mb-35'
+        .col-sm-12
+          %p.in-gold-500.font-18.mb-25= t(:remove_account)
+          = simple_form_for(resource_name, url: registration_path(resource_name), method: :delete, defaults: { input_html: { class: 'form-control' } }) do |f|
+            .general-settings-btn
+              = f.submit t(:please_remove_account), disabled: 'disabled', class: 'btn btn-default mb-20'
+            .form-group.checkbox.general-settings-checkbox
+              %label.checkbox-label
+                = check_box_tag t(:please_remove_account), true, false, class: 'checkbox-input', hidden: true
+                %span.checkbox-icon
+                  %i.fa.fa-check
+                %span.checkbox-text= t(:understand)
