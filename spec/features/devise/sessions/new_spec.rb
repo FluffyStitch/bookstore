@@ -27,7 +27,7 @@ RSpec.describe 'Log In', type: :feature, js: true do
       let(:password) { user.password }
 
       it 'success' do
-        expect(current_page).to have_content I18n.t('devise.failure.unconfirmed')
+        expect(current_page).to have_content I18n.t('devise.sessions.signed_in')
       end
     end
 
