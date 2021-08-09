@@ -44,3 +44,36 @@ en:
   filter_by: Filter by category
   sort_by: Sort by
   book_not_found: Book not found!
+  log_in: Log In
+  sign_up: Sign Up
+  or: or
+  new_password: Set new password
+  change: Change
+  forgot_password: Forgot your password?
+  send_email: We'll email you instructions on how to reset it
+  email_instructions: Email Instructions
+  cancel: Cancel
+  have_account: Have an Account?
+  not_have_account: Don’t have an Account?
+  remember: Remember me
+  not_receive_instructions: Didn't receive confirmation instructions?
+  sign_in_with: Sign in with %{provider}
+  placeholder:
+    password: Password
+    new_password: Type a new Password
+    confirm_password: Confirm Password
+    enter_email: Enter Email
+  messages:
+    confirmation_instructions: |
+      Welcome %{email}!
+      You can confirm your account email through the link below:
+    confirm_account: Confirm my account
+    hello_email: Hello %{email}!
+    change_unconfirmed_email: We're contacting you to notify you that your email is being changed to %{email}.
+    change_confirmed_email: We're contacting you to notify you that your email has been changed to %{email}.
+    password_change_notify: We're contacting you to notify you that your password has been changed.
+    reset_password_instructions: Someone has requested a link to change your password. You can do this through the link below.
+    change_password: Change my password
+    reset_password_message: |
+      If you didn't request this, please ignore this email.
+      Your password won't change until you access the link above and create a new one.

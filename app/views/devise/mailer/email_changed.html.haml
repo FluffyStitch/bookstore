@@ -1,0 +1,5 @@
+%p= t('messages.hello_email', email: @email)
+- if @resource.try(:unconfirmed_email?)
+  %p= t('messages.change_unconfirmed_email', email: @resource.unconfirmed_email)
+- else
+  %p= t('messages.change_confirmed_email', email: @resource.email)

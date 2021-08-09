@@ -36,7 +36,7 @@ RSpec.describe 'Book > Index', type: :feature, js: true do
 
     it 'displays all books after click' do
       current_page.view_more.click
-      current_page.wait_until_books_visible
+      current_page.wait_until_view_more_invisible
       expect(current_page.books.count).to eq(books.count)
     end
   end

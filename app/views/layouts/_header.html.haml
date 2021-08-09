@@ -26,8 +26,14 @@
               - categories.each do |category|
                 %li
                   = link_to category.name, books_path(filter: category)
-          %li
-            %a{href: "#"}= t('header.account')
+          - if user_signed_in?
+            %li
+              = link_to t('header.log_out'), destroy_user_session_path, method: :delete
+          - else
+            %li
+              = link_to t(:log_in), new_user_session_path
+            %li
+              = link_to t(:sign_up), new_user_registration_path
       .hidden-xs
         %ul.nav.navbar-nav
           %li
@@ -39,7 +45,11 @@
                 %li
                   = link_to category.name, books_path(filter: category)
               %li.divider{role: "separator"}
+            - if user_signed_in?
               %li
-                %a{href: "#"}= t('header.log_out')
-            %li
-              %a{href: "#"}= t('header.account')
+                = link_to t('header.log_out'), destroy_user_session_path, method: :delete
+            - else
+              %li
+                = link_to t(:log_in), new_user_session_path
+              %li
+                = link_to t(:sign_up), new_user_registration_path

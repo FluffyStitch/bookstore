@@ -12,6 +12,8 @@ gem 'devise', '~> 4.8.0'
 gem 'draper', '~> 4.0.2'
 gem 'ffaker', '~> 2.18.0'
 gem 'haml-rails', '~> 2.0.1'
+gem 'omniauth-github', '~> 2.0.0'
+gem 'omniauth-rails_csrf_protection', '~> 1.0.0'
 gem 'pagy', '~> 3.5'
 gem 'pg', '~> 1.1'
 gem 'pry', '~> 0.14.1'
@@ -49,5 +51,3 @@ group :test do
   gem 'site_prism', '~> 3.7.1'
   gem 'webdrivers', '~> 4.6.0'
 end
-
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
