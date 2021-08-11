@@ -1,0 +1,9 @@
+= simple_form_for(review, url: reviews_path, method: :post, remote: true, defaults: { input_html: { class: 'form-control' }, label_html: { class: 'in-grey-600' } }) do |f|
+  .col-md-8
+    .mb-40
+      = f.hidden_field :book_id, value: book.id
+      = f.hidden_field :score, value: 0
+      = f.input :title
+      = f.input :text, label: t('review.review'), as: :text
+    .text-right
+      = f.submit t('review.post'), class: 'btn btn-default mb-20'

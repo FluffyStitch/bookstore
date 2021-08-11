@@ -1,5 +1,5 @@
-= simple_form_for(address, url: address_path(address), method: :put, remote: true, defaults: { input_html: { class: 'form-control' } }) do |f|
-  = f.hidden_field :type, value: address.type, name: 'address[type]'
+= simple_form_for(address_form, url: address_path, method: :put, remote: true, defaults: { input_html: { class: 'form-control' } }) do |f|
+  = f.hidden_field :type, value: address_form.type, name: 'address[type]'
   = f.input :first_name, placeholder: t('address.first_name'), required: true, input_html: { id: 'first_name', name: 'address[first_name]' }
   = f.input :last_name, placeholder: t('address.last_name'), required: true, input_html: { id: 'last_name', name: 'address[last_name]' }
   = f.input :address, placeholder: t('address.address'), required: true, input_html: { id: 'address', name: 'address[address]' }

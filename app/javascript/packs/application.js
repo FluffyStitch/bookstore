@@ -10,6 +10,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import 'bootstrap-sass/assets/javascripts/bootstrap'
 import '../src/books'
 import '../src/user'
+import '../src/review'
 
 Rails.start()
 Turbolinks.start()
