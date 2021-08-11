@@ -45,8 +45,7 @@ ActiveAdmin.register Book do
       f.input :depth
       f.input :materials
       f.input :authors, collection: Author.all.map { |author|
-                                      ["#{author.first_name} #{author.second_name}",
-                                       author.id]
+                                      [author.second_name, author.id]
                                     }, as: :check_boxes
     end
     f.actions
