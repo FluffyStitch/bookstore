@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
 
   describe 'when params is valid' do
     let(:email) { FFaker::Internet.email }
-    let(:password) { FFaker::Internet.password }
+    let(:password) { (Array.new(7) { ('a'..'z').to_a.sample } << ('0'..'9').to_a.sample).join.capitalize }
 
     it { is_expected.to allow_value(email).for(:email) }
     it { is_expected.to allow_value(password).for(:password) }
