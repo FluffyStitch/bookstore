@@ -1,0 +1,10 @@
+= simple_form_for(address_form, url: address_path, method: :put, remote: true, defaults: { input_html: { class: 'form-control' } }) do |f|
+  = f.hidden_field :type, value: address_form.type, name: 'address[type]'
+  = f.input :first_name, placeholder: t('address.first_name'), required: true, input_html: { id: 'first_name', name: 'address[first_name]' }
+  = f.input :last_name, placeholder: t('address.last_name'), required: true, input_html: { id: 'last_name', name: 'address[last_name]' }
+  = f.input :address, placeholder: t('address.address'), required: true, input_html: { id: 'address', name: 'address[address]' }
+  = f.input :city, placeholder: t('address.city'), required: true, input_html: { id: 'city', name: 'address[city]' }
+  = f.input :zip, placeholder: t('address.zip'), required: true, input_html: { id: 'zip', name: 'address[zip]' }
+  = f.input :country, placeholder: t('address.country'), required: true, input_html: { id: 'country', name: 'address[country]' }
+  = f.input :phone, placeholder: t('address.phone'), required: true, input_html: { id: 'phone', name: 'address[phone]' }
+  = f.submit t(:save), class:'btn btn-default btn'

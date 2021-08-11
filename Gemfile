@@ -8,6 +8,8 @@ ruby '2.7.2'
 gem 'aasm', '~> 5.2.0'
 gem 'activeadmin', '~> 2.9.0'
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'countries', '~> 4.0.1'
+gem 'country_select', '~> 6.0.0'
 gem 'devise', '~> 4.8.0'
 gem 'draper', '~> 4.0.2'
 gem 'ffaker', '~> 2.18.0'

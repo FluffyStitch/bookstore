@@ -9,6 +9,7 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import 'bootstrap-sass/assets/javascripts/bootstrap'
 import '../src/books'
+import '../src/user'
 
 Rails.start()
 Turbolinks.start()

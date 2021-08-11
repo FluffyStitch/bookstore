@@ -15,10 +15,12 @@ RSpec.describe User, type: :model do
   it { is_expected.to have_db_index(:email) }
   it { is_expected.to have_db_index(:reset_password_token) }
   it { is_expected.to validate_presence_of(:email) }
+  it { is_expected.to have_one(:billing_address).dependent(:destroy) }
+  it { is_expected.to have_one(:shipping_address).dependent(:destroy) }
 
   describe 'when params is valid' do
     let(:email) { FFaker::Internet.email }
-    let(:password) { FFaker::Internet.password }
+    let(:password) { (Array.new(7) { ('a'..'z').to_a.sample } << ('0'..'9').to_a.sample).join.capitalize }
 
     it { is_expected.to allow_value(email).for(:email) }
     it { is_expected.to allow_value(password).for(:password) }
