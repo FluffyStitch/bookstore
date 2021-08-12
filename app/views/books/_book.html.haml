@@ -1,7 +1,7 @@
 .book.col-xs-6.col-sm-3.equal-height
   .general-thumb-wrap
   .thumbnail.general-thumbnail
-    %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
+    = image_tag book.main_image_url(:small), class: 'img-shadow general-thumbnail-img'
     .thumb-hover
       .general-thumb-link-wrap
         %a.thumb-hover-link{href: book_path(book)}

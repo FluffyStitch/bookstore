@@ -2,12 +2,15 @@
 
 ActiveAdmin.register Book do
   decorate_with BookDecorator
-
+  includes :authors, :category
   permit_params :title, :price, :quantity, :description, :year_of_publication, :height, :width, :depth, :materials,
-                :category_id, author_ids: []
+                :category_id, :main_image, author_ids: [], images_attributes: %i[id image _destroy]
 
   index do
     selectable_column
+    column :main_image do |book|
+      image_tag book.main_image_url(:small)
+    end
     column :category
     column :title
     column :all_authors
@@ -18,6 +21,14 @@ ActiveAdmin.register Book do
 
   show do
     attributes_table do
+      row :main_image do |book|
+        image_tag book.main_image_url(:medium)
+      end
+      row :images do |book|
+        book.images.map do |img|
+          image_tag img.image_url(:small)
+        end
+      end
       row :title
       row :price
       row :category
@@ -48,6 +59,12 @@ ActiveAdmin.register Book do
                                       ["#{author.first_name} #{author.second_name}",
                                        author.id]
                                     }, as: :check_boxes
+      f.input :main_image, as: :file
+      f.inputs do
+        f.has_many :images, allow_destroy: true do |a|
+          a.input :image, as: :file
+        end
+      end
     end
     f.actions
   end

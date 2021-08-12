@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_10_080920) do
+ActiveRecord::Schema.define(version: 2021_08_12_102341) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,6 +73,15 @@ ActiveRecord::Schema.define(version: 2021_08_10_080920) do
     t.text "description"
   end
 
+  create_table "book_images", force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.bigint "image_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_book_images_on_book_id"
+    t.index ["image_id"], name: "index_book_images_on_image_id"
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.decimal "price"
@@ -85,11 +95,18 @@ ActiveRecord::Schema.define(version: 2021_08_10_080920) do
     t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.jsonb "main_image_data", null: false
     t.index ["category_id"], name: "index_books_on_category_id"
   end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.jsonb "image_data", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -128,6 +145,8 @@ ActiveRecord::Schema.define(version: 2021_08_10_080920) do
   add_foreign_key "addresses", "users"
   add_foreign_key "author_books", "authors"
   add_foreign_key "author_books", "books"
+  add_foreign_key "book_images", "books"
+  add_foreign_key "book_images", "images"
   add_foreign_key "books", "categories"
   add_foreign_key "reviews", "books"
   add_foreign_key "reviews", "users"
