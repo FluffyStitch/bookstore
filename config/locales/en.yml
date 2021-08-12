@@ -105,3 +105,4 @@ en:
   approved: Approved
   rejected: Rejected
   verified: Verified Reviewer
+  review_with_count: Review (%{count})
