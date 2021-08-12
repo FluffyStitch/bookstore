@@ -14,7 +14,8 @@ RSpec.describe 'NewBook', type: :feature, js: true do
   it { expect(current_page).to be_displayed }
 
   describe 'create book' do
-    let(:attributes) { attributes_for(:book, category: category, authors: author) }
+    let(:attributes) { attributes_for(:book, :with_images, category: category, authors: author) }
+    let(:image) { Dir[Rails.root.join('spec/fixtures/images/*')].sample }
 
     before do
       current_page.form.category.select(attributes[:category].name)
@@ -28,11 +29,14 @@ RSpec.describe 'NewBook', type: :feature, js: true do
       current_page.form.depth.fill_in(with: attributes[:depth])
       current_page.form.materials.fill_in(with: attributes[:materials])
       current_page.form.authors.check
+      current_page.form.main_image.attach_file attributes[:main_image].path
+      current_page.form.add_new_image.click
+      current_page.form.image.attach_file image
       current_page.form.create.click
     end
 
     it 'success' do
-      attributes.keys.excluding(:category, :description, :quantity, :authors).each do |attribute|
+      attributes.keys.excluding(:category, :description, :quantity, :authors, :main_image).each do |attribute|
         expect(current_page).to have_content attributes[attribute]
       end
     end

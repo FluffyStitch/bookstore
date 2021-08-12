@@ -35,13 +35,14 @@ end
 Shrine.plugin :activerecord
 Shrine.plugin :default_url
 Shrine.plugin :derivatives, create_on_promote: true
+Shrine.plugin :determine_mime_type
 
 Shrine::Attacher.default_url do |derivative: nil, **|
   img = case derivative
-  when :small then 'small.jpg'
-  when :medium then 'medium.jpg'
-  when :large then 'large.jpg'
-  else 'book.jpg'
+  when :small then 'small.png'
+  when :medium then 'medium.png'
+  when :large then 'large.png'
+  else 'default.png'
   end
   ActionController::Base.helpers.asset_pack_path("media/images/#{img}")
 end

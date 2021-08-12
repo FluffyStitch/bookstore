@@ -9,10 +9,12 @@ gem 'aasm', '~> 5.2.0'
 gem 'activeadmin', '~> 2.9.0'
 gem 'aws-sdk-s3', '~> 1.98.0'
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'bullet', '~> 6.1.4'
 gem 'countries', '~> 4.0.1'
 gem 'country_select', '~> 6.0.0'
 gem 'devise', '~> 4.8.0'
 gem 'draper', '~> 4.0.2'
+gem 'factory_bot_rails', '~> 6.2.0'
 gem 'ffaker', '~> 2.18.0'
 gem 'haml-rails', '~> 2.0.1'
 gem 'image_processing', '~> 1.12.1'
@@ -50,7 +52,6 @@ end
 
 group :test do
   gem 'capybara', '~> 3.35.3'
-  gem 'factory_bot_rails', '~> 6.2.0'
   gem 'shoulda-matchers', '~> 5.0.0'
   gem 'shrine-memory', '~> 0.1.0'
   gem 'simplecov', '~> 0.21.2'

@@ -3,6 +3,8 @@
 ActiveAdmin.register Review do
   actions :index, :show
 
+  includes :book, :user
+
   scope :unprocessed, default: true
   scope :processed, &:not_unprocessed
 

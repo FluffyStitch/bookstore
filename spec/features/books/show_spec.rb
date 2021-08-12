@@ -8,11 +8,12 @@ RSpec.describe 'Book > Show', type: :feature, js: true do
   let!(:user) { create(:user) }
 
   before do
-    sign_in user
     current_page.load(id: book.id)
   end
 
   it { expect(current_page).to be_displayed }
+
+  it { expect(current_page).to have_selector("img[src$='.png']") }
 
   describe 'when change count' do
     it 'plus' do
@@ -48,6 +49,8 @@ RSpec.describe 'Book > Show', type: :feature, js: true do
 
   describe 'create reviews' do
     before do
+      sign_in user
+      current_page.load(id: book.id)
       current_page.stars[rand(0..4)].click
       current_page.form.title.fill_in(with: attributes[:title])
       current_page.form.text.fill_in(with: attributes[:text])

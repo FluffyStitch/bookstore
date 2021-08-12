@@ -2,7 +2,9 @@
 
 ActiveAdmin.register Book do
   decorate_with BookDecorator
-  includes :authors, :category
+
+  includes :category, :author_books, :authors
+
   permit_params :title, :price, :quantity, :description, :year_of_publication, :height, :width, :depth, :materials,
                 :category_id, :main_image, author_ids: [], images_attributes: %i[id image _destroy]
 
@@ -56,8 +58,7 @@ ActiveAdmin.register Book do
       f.input :depth
       f.input :materials
       f.input :authors, collection: Author.all.map { |author|
-                                      ["#{author.first_name} #{author.second_name}",
-                                       author.id]
+                                      [author.second_name, author.id]
                                     }, as: :check_boxes
       f.input :main_image, as: :file
       f.inputs do

@@ -13,5 +13,10 @@ FactoryBot.define do
     materials { FFaker::AnimalUS.common_name }
     category { create(:category) }
     authors { create_list(:author, rand(1..3)) }
+
+    trait :with_images do
+      main_image { Rack::Test::UploadedFile.new(Dir[Rails.root.join('spec/fixtures/images/*')].sample, 'image/jpeg') }
+      after(:build) { |book, _| create_list(:image, rand(1..3), book: book) }
+    end
   end
 end

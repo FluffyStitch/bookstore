@@ -7,6 +7,6 @@ FactoryBot.define do
     text { FFaker::Book.description }
     user { create(:user) }
     status { rand(0..2) }
-    score { rand(5) }
+    score { rand(1..5) }
   end
 end
