@@ -3,6 +3,8 @@
 ActiveAdmin.register Book do
   decorate_with BookDecorator
 
+  includes :category, :author_books, :authors
+
   permit_params :title, :price, :quantity, :description, :year_of_publication, :height, :width, :depth, :materials,
                 :category_id, author_ids: []
 
