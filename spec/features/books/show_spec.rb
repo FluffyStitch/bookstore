@@ -47,6 +47,13 @@ RSpec.describe 'Book > Show', type: :feature, js: true do
     end
   end
 
+  describe 'when add book to cart' do
+    it 'added' do
+      current_page.shop.click
+      expect(current_page).to have_content I18n.t(:book_added)
+    end
+  end
+
   describe 'create reviews' do
     before do
       sign_in user

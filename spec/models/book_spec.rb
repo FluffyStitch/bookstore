@@ -17,4 +17,6 @@ RSpec.describe Book, type: :model do
   it { is_expected.to have_many(:authors).through(:author_books) }
   it { is_expected.to have_many(:reviews).dependent(:destroy) }
   it { is_expected.to have_many(:images).dependent(:destroy) }
+  it { is_expected.to have_many(:order_items).dependent(:destroy) }
+  it { is_expected.to have_many(:orders).through(:order_items) }
 end

@@ -106,3 +106,21 @@ en:
   rejected: Rejected
   verified: Verified Reviewer
   review_with_count: Review (%{count})
+  cart: Cart
+  price_label: Price
+  quantity: Quantity
+  sub_total: SubTotal
+  product: Product
+  enter_coupon_code: Enter Your Coupon Code
+  apply_coupon: Apply Coupon
+  order_summary: Order Summary
+  coupon: Coupon
+  order_total: Order Total
+  checkout: Checkout
+  coupon_not_found: Coupon not found
+  coupon_used: Coupon already used
+  coupon_added: Coupon successfully added
+  book_added: Book successfully added
+  cart_has_coupon: You used coupon for this cart
+  delivered: Delivered
+  canceled: Canceled

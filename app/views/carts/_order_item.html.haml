@@ -1,0 +1,20 @@
+%tr{ id: "order_item_#{order_item.id}"}
+  %td
+    .general-img-wrap-table
+      = image_tag order_item.book.main_image_url
+  %td
+    %p.title= order_item.book.title
+  %td
+    %span.font-16.in-gold-500= t(:price, money: order_item.book.price)
+  %td
+    .input-group
+      = link_to cart_path(order: { order_item: { book_id: order_item.book, quantity: -1 }}), method: :put, remote: true, class: 'input-link' do
+        %i.fa.fa-minus.line-height-40
+      %input.form-control.quantity-input{type: "text", value: order_item.quantity}
+      = link_to cart_path(order: { order_item: { book_id: order_item.book, quantity: 1 }}), method: :put, remote: true, class: 'input-link' do
+        %i.fa.fa-plus.line-height-40
+  %td
+    %span.font-16.in-gold-500= t(:price, money: order_item.book.price * order_item.quantity)
+  %td
+    = link_to destroy_order_item_cart_path(order: { order_item: { id: order_item } }), method: :delete, remote: true, class: 'button close general-cart-close' do
+      %span{'aria-hidden': "true"} &times;

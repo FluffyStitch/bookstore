@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_one :billing_address, class_name: 'BillingAddress', dependent: :destroy
   has_one :shipping_address, class_name: 'ShippingAddress', dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_one :current_order, -> { in_progress }, class_name: 'Order', dependent: :destroy, inverse_of: :user
 
   validates :password, format: { with: PASSWORD_REGEX }, if: :password_required?
 end
