@@ -9,8 +9,12 @@ RSpec.describe BookDecorator do
   describe '#all_authors' do
     let(:output) { authors.map { |author| "#{author.first_name} #{author.second_name}" }.join(', ') }
 
-    it 'output full names' do
-      expect(book.all_authors).to eq output
-    end
+    it { expect(book.all_authors).to eq output }
+  end
+
+  describe '#short_description' do
+    let(:output) { book.description.truncate(BookDecorator::DESCRIPTION_LENGTH, separator: ' ') }
+
+    it { expect(book.short_description).to eq output }
   end
 end

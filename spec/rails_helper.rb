@@ -26,4 +26,4 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 end
 
-Dir[Rails.root.join('spec/support/**/**/*.rb')].sort.each { |file| require file }
+Dir[Rails.root.join('spec/support/**/**/**/*.rb')].sort.each { |file| require file }
