@@ -6,7 +6,7 @@ ActiveAdmin.register Review do
   includes :book, :user
 
   scope :unprocessed, default: true
-  scope :processed, &:not_unprocessed
+  scope(:processed) { |scope| scope.where(status: %i[approved rejected]) }
 
   index do
     selectable_column
@@ -28,11 +28,11 @@ ActiveAdmin.register Review do
     redirect_to admin_reviews_path, notice: "#{I18n.t(:rejected)}!"
   end
 
-  action_item :approved, only: :show do
+  action_item :approved, only: :show, if: proc { resource.unprocessed? } do
     link_to I18n.t(:approved), approved_admin_review_path(review), method: :put, id: :approved
   end
 
-  action_item :rejected, only: :show do
+  action_item :rejected, only: :show, if: proc { resource.unprocessed? } do
     link_to I18n.t(:rejected), rejected_admin_review_path(review), method: :put, id: :rejected
   end
 end
