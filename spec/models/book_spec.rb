@@ -14,4 +14,5 @@ RSpec.describe Book, type: :model do
   it { is_expected.to have_db_index(:category_id) }
   it { is_expected.to have_many(:author_books).dependent(:destroy) }
   it { is_expected.to have_many(:authors).through(:author_books) }
+  it { is_expected.to have_many(:reviews).dependent(:destroy) }
 end

@@ -101,3 +101,8 @@ en:
   remove_account: Remove account
   understand: I understand that all data will be lost
   please_remove_account: Please Remove My Account
+  review_posted: Thanks for Review. It will be published as soon as Admin will approve it.
+  approved: Approved
+  rejected: Rejected
+  verified: Verified Reviewer
+  review_with_count: Review (%{count})

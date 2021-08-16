@@ -1,0 +1,15 @@
+.general-message-wrap.divider-lg
+  .clearfix
+    %span.img-circle.logo-size.inlide-block.pull-left.logo-empty= review.user.email.first
+    .ml-70
+      %div
+        .general-message-date.hidden-xs #{review.created_at.day}/#{review.created_at.month}/#{review.created_at.year}
+        .max-600
+          .general-message-verified= t(:verified)
+          .general-message-name= review.user.email
+      .mb-15
+        - review.score.times do
+          %i.fa.fa-star.rate-star
+        - (5 - review.score).times do
+          %i.fa.fa-star.rate-star.rate-empty
+      %p= review.text

@@ -8,4 +8,12 @@ class BookPage < SitePrism::Page
   element :plus, '.fa-plus'
   element :description, '.line-height-2 div'
   element :read_more, '#read_more'
+
+  elements :stars, '[id^=star-]'
+  section :form, '#new_review' do
+    element :title, '#review_title'
+    element :text, '#review_text'
+
+    element :post, '[type="submit"]'
+  end
 end
