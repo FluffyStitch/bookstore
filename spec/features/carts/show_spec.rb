@@ -7,6 +7,15 @@ RSpec.describe 'Cart > Show', type: :feature, js: true do
   let(:user) { create(:user) }
   let(:params) { attributes_for(:order_item, quantity: 1) }
 
+  def wait_for_ajax
+    Timeout.timeout(20) do
+      loop do
+        active = page.evaluate_script('$.active')
+        break if active == 0
+      end
+    end
+  end
+
   before do
     sign_in user
     current_page.load
@@ -17,21 +26,21 @@ RSpec.describe 'Cart > Show', type: :feature, js: true do
   describe 'when change count' do
     it 'plus' do
       current_page.order_items.first.plus.click
-      assert_text(I18n.t(:price, money: order_item.book.price * 2))
-      expect(current_page.order_total.text).to eq(I18n.t(:price, money: order_item.book.price * 2))
+      expect(current_page.order_total).to have_text(I18n.t(:price, money: order_item.book.price * 2))
     end
 
-    it 'minus' do
-      current_page.order_items.first.plus.click
-      assert_text(I18n.t(:price, money: order_item.book.price * 2))
-      current_page.order_items.first.minus.click
-      assert_text(I18n.t(:price, money: order_item.book.price))
-      expect(current_page.order_total.text).to eq(I18n.t(:price, money: order_item.book.price))
+    context 'when minus' do
+      let(:params) { attributes_for(:order_item, quantity: 2) }
+
+      it 'minus' do
+        current_page.order_items.first.minus.click
+        expect(current_page.order_total).to have_text(I18n.t(:price, money: order_item.book.price))
+      end
     end
 
     it 'does not minus' do
       current_page.order_items.first.minus.click
-      expect(current_page.order_total.text).to eq(I18n.t(:price, money: order_item.book.price))
+      expect(current_page.order_total).to have_text(I18n.t(:price, money: order_item.book.price))
     end
   end
 
@@ -49,7 +58,7 @@ RSpec.describe 'Cart > Show', type: :feature, js: true do
     it 'discount' do
       current_page.form.coupon.fill_in(with: coupon.code)
       current_page.form.apply.click
-      expect(current_page.order_total.text).to eq(I18n.t(:price, money: order_item.book.price - discount))
+      expect(current_page.order_total).to have_text(I18n.t(:price, money: order_item.book.price - discount))
     end
   end
 end
