@@ -17,21 +17,20 @@ RSpec.describe 'Cart > Show', type: :feature, js: true do
   describe 'when change count' do
     it 'plus' do
       current_page.order_items.first.plus.click
-      current_page.load
+      assert_text(I18n.t(:price, money: order_item.book.price * 2))
       expect(current_page.order_total.text).to eq(I18n.t(:price, money: order_item.book.price * 2))
     end
 
     it 'minus' do
       current_page.order_items.first.plus.click
-      current_page.load
+      assert_text(I18n.t(:price, money: order_item.book.price * 2))
       current_page.order_items.first.minus.click
-      current_page.load
+      assert_text(I18n.t(:price, money: order_item.book.price))
       expect(current_page.order_total.text).to eq(I18n.t(:price, money: order_item.book.price))
     end
 
     it 'does not minus' do
       current_page.order_items.first.minus.click
-      current_page.load
       expect(current_page.order_total.text).to eq(I18n.t(:price, money: order_item.book.price))
     end
   end
@@ -39,8 +38,7 @@ RSpec.describe 'Cart > Show', type: :feature, js: true do
   describe 'when delete order item' do
     it 'delete' do
       current_page.order_items.first.delete.click
-      current_page.load
-      expect(current_page.order_total.text).to eq(I18n.t(:price, money: 0.0))
+      expect(current_page).to have_no_order_items
     end
   end
 
