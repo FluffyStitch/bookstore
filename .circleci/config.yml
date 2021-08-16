@@ -34,7 +34,7 @@ jobs:
       - ruby/install-deps
       - run:
           name: Install ImageMagick
-          command: sudo apt-get install imagemagick
+          command: sudo apt-get update && sudo apt-get install imagemagick
       - node/install-packages:
           pkg-manager: yarn
           cache-key: "yarn.lock"
