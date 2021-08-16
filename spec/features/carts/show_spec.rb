@@ -7,15 +7,6 @@ RSpec.describe 'Cart > Show', type: :feature, js: true do
   let(:user) { create(:user) }
   let(:params) { attributes_for(:order_item, quantity: 1) }
 
-  def wait_for_ajax
-    Timeout.timeout(20) do
-      loop do
-        active = page.evaluate_script('$.active')
-        break if active == 0
-      end
-    end
-  end
-
   before do
     sign_in user
     current_page.load
