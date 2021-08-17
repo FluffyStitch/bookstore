@@ -1,0 +1,25 @@
+%main.container
+  .row
+    .col-md-5.mb-40
+      .text-center
+        %h3.general-subtitle= t(:returning_customer)
+        = link_to omniauth_authorize_path(User, :github), class: 'general-login-icon', method: :post do
+          %i.fa.fa-github-square
+        %p.general-login-text= t(:or)
+        = simple_form_for(:user, url: session_path('user'), defaults: { input_html: { class: 'form-control mb-30' } }, html: { id: 'log_in' }) do |f|
+          = f.input :email, autofocus: true, autocomplete: 'email', placeholder: t('placeholder.enter_email')
+          = f.input :password, autocomplete: 'current-password', placeholder: t('placeholder.password')
+          = link_to t(:forgot_password), new_user_password_path, class: 'help-block in-gold-500'
+          .text-center
+            .actions
+              = f.submit t(:log_in), class: 'btn btn-default mb-20'
+    .col-md-5.col-md-offset-1.mb-60
+      .text-center
+        %h3.general-subtitle= t(:new_customer)
+        = link_to omniauth_authorize_path(User, :github), class: 'general-login-icon', method: :post do
+          %i.fa.fa-github-square
+        %p.general-login-text= t(:or)
+      .mb-40
+        %p.mb-5= t(:quik_register)
+        %p.general-info-text.font-12.mb-20= t(:later_password_instructions)
+        = render partial: 'quick_registrations/quik_register', locals: { user: :user }

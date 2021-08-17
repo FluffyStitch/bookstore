@@ -14,4 +14,6 @@ Rails.application.routes.draw do
       delete :destroy_order_item
     end
   end
+  resource :quick_registration, only: [:show, :create]
+  resource :checkout, only: [:show]
 end

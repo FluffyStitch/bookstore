@@ -14,4 +14,5 @@ class CartPage < SitePrism::Page
   end
 
   element :order_total, '#order_total'
+  element :checkout, '.center-block'
 end
