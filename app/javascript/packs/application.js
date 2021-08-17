@@ -8,9 +8,11 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import 'bootstrap-sass/assets/javascripts/bootstrap'
+import 'featherlight/release/featherlight.min.js'
 import '../src/books'
 import '../src/user'
 import '../src/review'
+require.context('../images', true)
 
 Rails.start()
 Turbolinks.start()

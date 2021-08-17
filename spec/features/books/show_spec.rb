@@ -13,6 +13,8 @@ RSpec.describe 'Book > Show', type: :feature, js: true do
 
   it { expect(current_page).to be_displayed }
 
+  it { expect(current_page).to have_selector("img[src$='.png']") }
+
   describe 'when change count' do
     it 'plus' do
       current_page.plus.click

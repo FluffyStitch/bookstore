@@ -10,9 +10,11 @@ RSpec.describe Book, type: :model do
   it { is_expected.to have_db_column(:width) }
   it { is_expected.to have_db_column(:depth) }
   it { is_expected.to have_db_column(:materials) }
+  it { is_expected.to have_db_column(:main_image_data) }
   it { is_expected.to belong_to(:category) }
   it { is_expected.to have_db_index(:category_id) }
   it { is_expected.to have_many(:author_books).dependent(:destroy) }
   it { is_expected.to have_many(:authors).through(:author_books) }
   it { is_expected.to have_many(:reviews).dependent(:destroy) }
+  it { is_expected.to have_many(:images).dependent(:destroy) }
 end

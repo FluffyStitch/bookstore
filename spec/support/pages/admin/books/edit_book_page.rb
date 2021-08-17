@@ -15,6 +15,9 @@ class EditBookPage < SitePrism::Page
     element :depth, '#book_depth'
     element :materials, '#book_materials'
     elements :authors, '[type="checkbox"]'
+    element :main_image, '#book_main_image'
+    element :add_new_image, '.has_many_add'
+    element :image, '#book_images_attributes_0_image'
 
     element :edit, '[type="submit"]'
   end
