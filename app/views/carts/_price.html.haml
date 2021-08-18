@@ -1,0 +1,16 @@
+%table.general-summary-table.general-summary-table-right.general-text-right
+  %tr
+    %td
+      %p.font-16= t(:sub_total)
+    %td
+      %p.font-16= t(:price, money: presenter.sub_total)
+  %tr
+    %td
+      %p.font-16= t(:coupon)
+    %td
+      %p.font-16= t(:price, money: presenter.discount)
+  %tr
+    %td
+      %strong.font-18= t(:order_total)
+    %td
+      %strong.font-18#order_total= t(:price, money: presenter.order_total)

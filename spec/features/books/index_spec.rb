@@ -27,6 +27,12 @@ RSpec.describe 'Book > Index', type: :feature, js: true do
     expect(current_page.current_url).to include('/books/')
   end
 
+  it 'add book to cart' do
+    current_page.books.first.img.hover
+    current_page.books.first.shop.click
+    expect(current_page).to have_content I18n.t(:book_added)
+  end
+
   describe 'when click view more button' do
     let!(:books) { create_list(:book, rand(13..18)) }
 

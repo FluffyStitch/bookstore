@@ -5,6 +5,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def github
     @user = User::FromOmniAuth.call(request.env['omniauth.auth'])
+    Order::TransferCart.new(@user, session).call if session[:cart_id]
     sign_in_and_redirect @user, event: :authentication
     set_flash_message(:notice, :success, kind: GITHUB) if is_navigational_format?
   end

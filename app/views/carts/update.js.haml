@@ -1,0 +1,2 @@
+$("#order_item_#{j(@order_item.id)}").replaceWith("#{j(render(partial: 'carts/order_item', locals: { order_item: @order_item }))}");
+$("#order_summary").html("#{j(render(partial: 'carts/price', locals: { presenter: @presenter }))}");

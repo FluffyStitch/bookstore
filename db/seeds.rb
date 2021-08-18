@@ -21,3 +21,5 @@ end
 books.each do |book|
   rand(1..3).times { FactoryBot.create(:image, book: book) }
 end
+
+Coupon.create(code: Array.new(4) { rand(9) }.join, discount: rand(0.0..0.6).round(2))

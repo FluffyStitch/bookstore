@@ -1,0 +1,32 @@
+%main.container.general-main-wrap
+  %h1.general-title-margin= t(:cart)
+  .visible-xs
+    = render partial: 'carts/order_item_xs', collection: @presenter.cart.order_items.includes(:book), as: :order_item
+  .hidden-xs
+    %table.table.table-hover
+      %tr.no-hover
+        %th.col-pic.pl-0
+          %span.in-grey-600= t(:product)
+        %th.col-title
+        %th.col-price
+          %span.in-grey-600= t(:price_label)
+        %th.col-quantity
+          %span.in-grey-600= t(:quantity)
+        %th.col-total
+          %span.in-grey-600= t(:sub_total)
+        %th.col-close
+      = render partial: 'carts/order_item', collection: @presenter.cart.order_items.includes(:book), as: :order_item
+  .general-order-wrap
+    .row
+      .col-sm-4
+        .input-group.general-input-group
+          = simple_form_for 'order[coupon]', url: add_coupon_cart_path, method: :put do |f|
+            = f.input :code, placeholder: t(:enter_coupon_code), label: t(:enter_coupon_code), class: 'form-control mb-30', label_html: { class: 'input-label' }
+            = f.submit t(:apply_coupon), class: 'btn btn-primary mr-5 mb-15'
+      .col-sm-8
+        .res-mr-200.text-center.general-text-right
+          %p.in-gold-500.font-18= t(:order_summary)
+          #order_summary
+            = render partial: 'carts/price', locals: { presenter: @presenter }
+          %button.btn.btn-default.mb-20.visible-xs-inline-block= t(:checkout)
+  %button.btn.btn-default.mb-20.hidden-xs.center-block= t(:checkout)

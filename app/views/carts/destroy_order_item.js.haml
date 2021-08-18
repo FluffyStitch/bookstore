@@ -1,0 +1,2 @@
+$("#order_item_#{j(@order_item.id)}").remove()
+$("#order_summary").html("#{j(render(partial: 'carts/price', locals: { presenter: @presenter }))}");

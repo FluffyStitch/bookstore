@@ -6,6 +6,7 @@ class BookPage < SitePrism::Page
   element :price, '.mt-10'
   element :minus, '.fa-minus'
   element :plus, '.fa-plus'
+  element :shop, '[value="Add to Cart"]'
   element :description, '.line-height-2 div'
   element :read_more, '#read_more'
 
