@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CartsController < ApplicationController
-  before_action :presenter
+  before_action :presenter, :current_cart
 
   def update
     @order_item = Order::UpdateOrderItems.new(cart: current_cart, params: order_params[:order_item]).call
@@ -32,5 +32,9 @@ class CartsController < ApplicationController
 
   def presenter
     @presenter ||= CartPresenter.new(current_cart)
+  end
+
+  def current_cart
+    @current_cart ||= Order::CurrentCart.new(current_user, session, user_signed_in?).current_cart
   end
 end
