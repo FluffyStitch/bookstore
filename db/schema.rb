@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 2021_08_13_183154) do
 
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
+    t.string "uniq_number"
     t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

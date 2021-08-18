@@ -12,13 +12,9 @@ RSpec.describe 'ViewOrder', type: :feature, js: true do
 
   it { expect(current_page).to be_displayed }
 
-  it 'delivered' do
-    current_page.delivered.click
-    expect(current_page).to have_content I18n.t(:delivered)
-  end
-
-  it 'canceled' do
-    current_page.canceled.click
-    expect(current_page).to have_content I18n.t(:canceled)
+  it 'displays attributes of order' do
+    %i[uniq_number books coupon status].each do |attribute|
+      expect(current_page).to have_content order[attribute]
+    end
   end
 end

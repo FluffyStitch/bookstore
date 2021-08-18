@@ -10,7 +10,7 @@ class Order
     end
 
     def call
-      @user.current_order = Order.find_by(id: @session[:cart_id])
+      @user.update(current_order: Order.find_by(id: @session[:cart_id]))
       @session[:cart_id] = nil
     end
   end
