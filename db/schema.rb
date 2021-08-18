@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_13_183154) do
+ActiveRecord::Schema.define(version: 2021_08_17_181254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,10 +38,11 @@ ActiveRecord::Schema.define(version: 2021_08_13_183154) do
     t.string "country", null: false
     t.string "phone", null: false
     t.string "type", null: false
-    t.bigint "user_id", null: false
+    t.string "addressable_type"
+    t.bigint "addressable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_addresses_on_user_id"
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -106,6 +107,15 @@ ActiveRecord::Schema.define(version: 2021_08_13_183154) do
     t.index ["order_id"], name: "index_coupons_on_order_id"
   end
 
+  create_table "delivery_types", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "min_days", null: false
+    t.integer "max_days", null: false
+    t.decimal "price", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "images", force: :cascade do |t|
     t.jsonb "image_data", null: false
     t.bigint "book_id", null: false
@@ -126,6 +136,7 @@ ActiveRecord::Schema.define(version: 2021_08_13_183154) do
 
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
+    t.string "uniq_number"
     t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -163,7 +174,6 @@ ActiveRecord::Schema.define(version: 2021_08_13_183154) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "addresses", "users"
   add_foreign_key "author_books", "authors"
   add_foreign_key "author_books", "books"
   add_foreign_key "books", "categories"
