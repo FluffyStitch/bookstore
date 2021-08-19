@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Delivery do
+RSpec.describe Checkout::Delivery do
   subject(:delivery) { described_class.new(order, order_params).call }
 
   let(:order) { create(:order, status: 1) }

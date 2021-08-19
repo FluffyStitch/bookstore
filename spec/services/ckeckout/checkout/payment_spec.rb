@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Payment do
+RSpec.describe Checkout::Payment do
   subject(:payment) { described_class.new(order, order_params).call }
 
   let(:order) { create(:order, status: 2) }
