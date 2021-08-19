@@ -1,0 +1,10 @@
+.visible-xs.visible-sm
+= f.simple_fields_for(address_form, defaults: { input_html: { class: 'form-control' }, label_html: { class: 'control-label input-label'} }) do |a|
+  = a.hidden_field :type, value: address_form.type, name: "order[#{address_form.type.underscore}][type]"
+  = a.input :first_name, placeholder: t('address.first_name'), required: true, input_html: { id: 'first_name', name: "order[#{address_form.type.underscore}][first_name]" }
+  = a.input :last_name, placeholder: t('address.last_name'), required: true, input_html: { id: 'last_name', name: "order[#{address_form.type.underscore}][last_name]" }
+  = a.input :address, placeholder: t('address.address'), required: true, input_html: { id: 'address', name: "order[#{address_form.type.underscore}][address]" }
+  = a.input :city, placeholder: t('address.city'), required: true, input_html: { id: 'city', name: "order[#{address_form.type.underscore}][city]" }
+  = a.input :zip, placeholder: t('address.zip'), required: true, input_html: { id: 'zip', name: "order[#{address_form.type.underscore}][zip]" }
+  = a.input :country, placeholder: t('address.country'), required: true, input_html: { id: 'country', name: "order[#{address_form.type.underscore}][country]" }
+  = a.input :phone, placeholder: t('address.phone'), required: true, input_html: { id: 'phone', name: "order[#{address_form.type.underscore}][phone]" }

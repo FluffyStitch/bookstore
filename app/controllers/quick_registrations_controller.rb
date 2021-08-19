@@ -10,7 +10,7 @@ class QuickRegistrationsController < ApplicationController
       @user.send_reset_password_instructions
       Order::TransferCart.new(@user, session).call
       sign_in @user
-      redirect_to checkout_path, notice: I18n.t('devise.registrations.signed_up')
+      redirect_to root_path, notice: I18n.t('devise.registrations.signed_up')
     else render :create
     end
   end

@@ -1,0 +1,52 @@
+%h3.general-subtitle= t(:delivery_type)
+.visible-xs
+  - DeliveryType.all.each do |delivery|
+    .general-cart-item.divider-lg-bottom
+      %table.table
+        %tr
+          %td.col-half
+            %span.in-grey-600= t(:method)
+          %td.col-half
+            .form-group.radio.mt-0.mb-0
+              %label.radio-label
+                = radio_button_tag 'order[delivery_type_id]', delivery.id, @presenter.cart.delivery_type_id == delivery.id, class: 'radio-input', hidden: true
+                %span.radio-icon
+                %span.radio-text= delivery.name
+        %tr
+          %td
+            %span.in-grey-600= t(:days)
+          %td
+            %span.font-16.fw-300= t(:days_range, min: delivery.min_days, max: delivery.max_days)
+        %tr
+          %td
+            %span.in-grey-600= t(:price_label)
+          %td
+            %span.font-16.in-gold-500= t(:price, money: delivery.price)
+.hidden-xs.mb-res-50
+  = simple_form_for @presenter.cart, url: checkout_path, method: :put, remote: true do |f|
+    #error
+    %table.table.table-hover
+      %thead
+        %tr
+          %th.col-method
+            %span.in-grey-600.ml-40= t(:method)
+          %th
+            %span.in-grey-600= t(:days)
+          %th
+            %span.in-grey-600= t(:price_label)
+      %tbody
+        - DeliveryType.all.each do |delivery|
+          %tr
+            %td
+              .form-group.radio.mt-0.mb-0
+                %label.radio-label
+                  = radio_button_tag 'order[delivery_type_id]', delivery.id, @presenter.cart.delivery_type_id == delivery.id, class: 'radio-input', hidden: true
+                  %span.radio-icon
+                  %span.radio-text= delivery.name
+            %td
+              %span= t(:days_range, min: delivery.min_days, max: delivery.max_days)
+            %td
+              %span.font-16.in-gold-500= t(:price, money: delivery.price)
+    = render partial: 'checkouts/price', locals: { presenter: @presenter }
+    .text-center
+      = f.submit t(:save_and_continue), class: 'btn btn-default mb-20'

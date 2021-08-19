@@ -65,6 +65,8 @@ en:
     confirm_password: Confirm Password
     enter_email: Enter Email
     old_password: Old Password
+    card_number: Card Number
+    name_card: Name on Card
   messages:
     confirmation_instructions: |
       Welcome %{email}!
@@ -110,6 +112,7 @@ en:
   price_label: Price
   quantity: Quantity
   sub_total: SubTotal
+  delivery: Delivery
   product: Product
   enter_coupon_code: Enter Your Coupon Code
   apply_coupon: Apply Coupon
@@ -130,3 +133,30 @@ en:
   later_password_instructions: You’ll be able to create password later
   continue_checkout: Continue to Checkout
   order: [Address, Delivery, Payment, Confirm, Complete]
+  use_billing_address: Use billing address
+  save_and_continue: Save and continue
+  thx_for_order: Thank You for your Order!
+  order_confirmation: An order confirmation has been sent to %{email}
+  order_number: 'Order #%{number}'
+  edit: edit
+  phone_number: Phone %{number}
+  book_label: Book
+  back_store: Back to Store
+  delivery_type: Delivery Type
+  method: Method
+  days: Days
+  days_range: From %{min} to %{max} days
+  credit_card: Credit Card
+  validity: MM / YY
+  cvv: CVV
+  hint: |
+    3-digit security code, usually found on the back of your card.
+    American Express cards has 4-digit code, located on the front
+  shipments: Shipments
+  payment_info: Payment Information
+  mask_number: '** ** ** %{numbers}'
+  place_order: Place Order
+  status:
+    in_delivery: In Delivery
+    delivered: Delivered
+    canceled: Canceled

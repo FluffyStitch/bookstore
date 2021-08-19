@@ -18,6 +18,9 @@ class AddressesController < ApplicationController
   end
 
   def address_form
-    AddressForm.new(current_user.public_send(address_params[:type].underscore) || Address.new(user_id: current_user.id))
+    address = current_user.public_send(address_params[:type].underscore) || Address.new(
+      addressable_id: current_user.id, addressable_type: current_user.class
+    )
+    AddressForm.new(address)
   end
 end

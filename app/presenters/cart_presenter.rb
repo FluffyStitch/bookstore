@@ -19,4 +19,8 @@ class CartPresenter < ApplicationPresenter
   def order_total
     sub_total - discount
   end
+
+  def order_total_with_delivery
+    order_total + (@cart.delivery_type&.price || 0)
+  end
 end

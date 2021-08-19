@@ -1,0 +1,42 @@
+%main.container.general-main-wrap
+  .row.mb-20
+    .col-sm-3
+      %h3.general-subtitle= t('address.shipping')
+      = render partial: 'checkouts/address_info', locals: { address: @presenter.cart.shipping_address }
+    .col-sm-3
+      %h3.general-subtitle= t('address.billing')
+      = render partial: 'checkouts/address_info', locals: { address: @presenter.cart.billing_address }
+    .col-sm-3
+      %h3.general-subtitle= t(:shipments)
+      %p.general-address
+        = @presenter.cart.delivery_type.name
+        = link_to t(:edit), update_status_checkout_path(status: :delivery), method: :put, class: 'general-edit'
+        %br
+        = t(:days_range, min: @presenter.cart.delivery_type.min_days, max: @presenter.cart.delivery_type.max_days)
+    .col-sm-3
+      %h3.general-subtitle= t(:payment_info)
+      %p.general-address
+        = t(:mask_number, numbers: @presenter.cart.credit_card.number[-4..-1])
+        = link_to t(:edit), update_status_checkout_path(status: :payment), method: :put, class: 'general-edit'
+        %br
+        = @presenter.cart.credit_card.validity
+  .visible-xs
+    = render partial: 'checkouts/book_xs', collection: @presenter.cart.order_items, as: :order_item
+  .hidden-xs.divider-lg.pt-20
+    %table.table.table-hover
+      %thead
+        %tr
+          %th
+            %span.in-grey-600= t(:book_label)
+          %th.col-method
+          %th
+            %span.in-grey-600= t(:price_label)
+          %th
+            %span.in-grey-600= t(:quantity)
+          %th
+            %span.in-grey-600= t(:sub_total)
+      %tbody
+        = render partial: 'checkouts/book', collection: @presenter.cart.order_items, as: :order_item
+  = render partial: 'checkouts/price', locals: { presenter: @presenter }
+  .text-center
+    = link_to t(:place_order), update_status_checkout_path(status: :complete), method: :put, class:'btn btn-default mb-20'

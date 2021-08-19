@@ -1,0 +1,2 @@
+%main.container.mb-res-50
+  = render partial: 'checkouts/payment/credit_card', locals: { credit_card: @presenter.cart.credit_card || :credit_card, presenter: @presenter }
