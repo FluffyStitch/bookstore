@@ -9,6 +9,11 @@ class CheckoutsController < ApplicationController
 
   before_action :set_forms, :presenter, :current_order
 
+  def create
+    current_user.order_in_progress = current_user.current_order
+    redirect_to checkout_path
+  end
+
   def update
     status = STATUSES[current_order.status.to_sym]
     service = status[:service].new(current_order, order_params)
@@ -46,7 +51,7 @@ class CheckoutsController < ApplicationController
   end
 
   def current_order
-    @current_order ||= current_user.orders.last
+    @current_order ||= current_user.order_in_progress
   end
 
   def send_email

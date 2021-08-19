@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe UpdateAddress do
+RSpec.describe Checkout::UpdateAddress do
   subject(:address) { described_class.new(order, order_params).call }
 
   before { address }
