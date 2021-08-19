@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   resource :checkout, only: [:show, :update, :update_status] do
     put :update_status
   end
+  resources :orders, only: [:index, :show]
 end

@@ -1,0 +1,72 @@
+%main.container.general-main-wrap
+  %h1.mt-0.mb-25= t(:my_orders)
+  %p.lead.small.mb-10.visible-xs= t(:sort_by)
+  .dropdowns.dropdown.general-order-dropdown
+    %a.dropdown-toggle.lead.small{'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+      = I18n.t(:status).has_key?(params[:filter].to_sym) ? t("status.#{params[:filter]}") : t(:waiting)
+      %i.fa.fa-angle-down.dropdown-icon.pull-right
+    %ul.dropdown-menu
+      %li
+        %a{href: orders_path(filter: :complete)}= t(:waiting)
+      %li
+        %a{href: orders_path(filter: :in_delivery)}= t('status.in_delivery')
+      %li
+        %a{href: orders_path(filter: :delivered)}= t('status.delivered')
+      %li
+        %a{href: orders_path(filter: :canceled)}= t('status.canceled')
+  .visible-xs
+    - @orders&.each do |order|
+      .general-cart-item.divider-lg-bottom.pt-0
+        %table.table
+          %tr
+            %td.col-half
+              %span.in-grey-600= t('orders.number')
+            %td.col-half
+              %span.general-order-number= order.uniq_number
+          %tr
+            %td
+              %span.in-grey-600= t('orders.completed')
+            %td
+              %span.in-grey-900.font-16.fw-300= order.updated_at
+          %tr
+            %td
+              %span.in-grey-600= t('orders.status')
+            %td
+              %span.font-16.in-grey-900.fw-300= order.status
+          %tr
+            %td
+              %span.in-grey-600= t('orders.total')
+            %td
+              %strong.font-16= t(:price, money: CartPresenter.new(order).order_total_with_delivery)
+          %tr
+            %td
+              %span.in-grey-600= t(:view)
+            %td
+              = link_to t(:view), order_path(order), class: 'font-16 in-grey-900 fw-300'
+  .hidden-xs.mb-res-50
+    %table.table.table-hover
+      %thead
+        %tr
+          %th
+            %span.in-grey-600= t('orders.number')
+          %th
+            %span.in-grey-600= t('orders.completed')
+          %th
+            %span.in-grey-600= t('orders.status')
+          %th
+            %span.in-grey-600= t('orders.total')
+          %th
+            %span.in-grey-600= t(:view)
+      %tbody
+        - @orders&.each do |order|
+          %tr
+            %td
+              %span.general-order-number= order.uniq_number
+            %td
+              %span.in-grey-900.font-16.fw-300= order.updated_at
+            %td
+              %span.font-16.in-grey-900.fw-300= order.status
+            %td
+              %strong.font-16= t(:price, money: CartPresenter.new(order).order_total_with_delivery)
+            %td
+              = link_to t(:view), order_path(order), class: 'font-16 in-grey-900 fw-300'

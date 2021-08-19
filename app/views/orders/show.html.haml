@@ -1,0 +1,40 @@
+%main.container.general-main-wrap
+  %h1.general-title-margin= t(:order_number, number: @order.uniq_number)
+  .row.mb-20
+    .col-sm-3
+      %h3.general-subtitle= t('address.shipping')
+      - if @order.shipping_address
+        = render partial: 'orders/address_info', locals: { address: @order.shipping_address }
+    .col-sm-3
+      %h3.general-subtitle= t('address.billing')
+      - if @order.billing_address
+        = render partial: 'orders/address_info', locals: { address: @order.billing_address }
+    .col-sm-3
+      %h3.general-subtitle= t(:shipments)
+      %p.general-address
+        = @order.delivery_type&.name
+    .col-sm-3
+      %h3.general-subtitle= t(:payment_info)
+      - if @order.credit_card
+        %p.general-address
+          = t(:mask_number, numbers: @order.credit_card.number[-4..-1])
+          %br
+          = @order.credit_card.validity
+  .visible-xs
+    = render partial: 'checkouts/book_xs', collection: @order.order_items, as: :order_item
+  .hidden-xs.divider-lg.pt-20
+    %table.table.table-hover
+      %thead
+        %tr
+          %th
+            %span.in-grey-600= t(:book_label)
+          %th.col-method
+          %th
+            %span.in-grey-600= t(:price_label)
+          %th
+            %span.in-grey-600= t(:quantity)
+          %th
+            %span.in-grey-600= t(:sub_total)
+      %tbody
+        = render partial: 'checkouts/book', collection: @order.order_items, as: :order_item
+  = render partial: 'checkouts/price', locals: { presenter: CartPresenter.new(@order) }
