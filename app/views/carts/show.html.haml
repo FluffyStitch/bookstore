@@ -28,5 +28,5 @@
           %p.in-gold-500.font-18= t(:order_summary)
           #order_summary
             = render partial: 'carts/price', locals: { presenter: @presenter }
-          %button.btn.btn-default.mb-20.visible-xs-inline-block= t(:checkout)
-  %button.btn.btn-default.mb-20.hidden-xs.center-block= t(:checkout)
+          = link_to t(:checkout), user_signed_in? ? checkout_path : quick_registration_path, method: :get, class: 'btn btn-default mb-20 visible-xs inline-block'
+  = link_to t(:checkout), user_signed_in? ? checkout_path : quick_registration_path, method: :get, class: 'btn btn-default mb-20 hidden-xs center-block'

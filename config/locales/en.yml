@@ -124,3 +124,9 @@ en:
   cart_has_coupon: You used coupon for this cart
   delivered: Delivered
   canceled: Canceled
+  returning_customer: Returning Customer
+  new_customer: New Customer
+  quik_register: Quik Register
+  later_password_instructions: You’ll be able to create password later
+  continue_checkout: Continue to Checkout
+  order: [Address, Delivery, Payment, Confirm, Complete]

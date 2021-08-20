@@ -1,0 +1,14 @@
+%main.container
+  %h1.general-title-margin= t(:checkout)
+  %ul.steps.list-inline.list-center
+    - t(:order).each_with_index do |status, i|
+      - if i == 0
+        %li.step.active
+          %span.step-number= i + 1
+          %span.step-text.hidden-xs= status
+      - else
+        %li.step
+          %span.step-number= i + 1
+          %span.step-text.hidden-xs= status
+      - unless i == 4
+        %li.step-divider
