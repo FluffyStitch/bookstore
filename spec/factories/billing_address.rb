@@ -7,7 +7,7 @@ FactoryBot.define do
     address { FFaker::Address.street_address }
     city { FFaker::Address.city_prefix }
     zip { FFaker::AddressUS.zip_code }
-    country { FFaker::Address.country }
+    country { ISO3166::Country.countries.sample.name }
     phone { "+#{ISO3166::Country.find_country_by_name(country).country_code}#{Array.new(9) { rand(9) }.join}" }
     type { I18n.t('address_class.billing') }
   end

@@ -51,7 +51,7 @@ class CheckoutsController < ApplicationController
   end
 
   def current_order
-    @current_order ||= current_user.order_in_progress
+    @current_order ||= current_user.order_in_progress || current_user.orders.where(status: :complete).last
   end
 
   def send_email

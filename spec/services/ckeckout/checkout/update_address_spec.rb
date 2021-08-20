@@ -9,7 +9,7 @@ RSpec.describe Checkout::UpdateAddress do
 
   describe 'when both addresses are valid' do
     let(:order_params) { { billing_address: billing, shipping_address: shipping } }
-    let(:country) { ISO3166::Country.find_country_by_name(FFaker::Address.country).alpha2 }
+    let(:country) { ISO3166::Country.countries.sample.alpha2 }
     let(:phone) { "+#{ISO3166::Country.find_country_by_alpha2(country).country_code}#{Array.new(9) { rand(9) }.join}" }
     let(:billing) { attributes_for(:billing_address, country: country, phone: phone) }
     let(:shipping) { attributes_for(:shipping_address, country: country, phone: phone) }

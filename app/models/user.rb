@@ -11,7 +11,8 @@ class User < ApplicationRecord
   has_one :shipping_address, as: :addressable, class_name: 'ShippingAddress', dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_one :current_order, -> { address }, class_name: 'Order', dependent: :destroy, inverse_of: :user
-  has_one :order_in_progress, class_name: 'Order', dependent: :destroy, inverse_of: :user
+  has_one :order_in_progress, -> { where(status: %i[address delivery payment confirm]) },
+          class_name: 'Order', dependent: :destroy, inverse_of: :user
   has_many :orders, dependent: :destroy
 
   validates :password, format: { with: PASSWORD_REGEX }, if: :password_required?
