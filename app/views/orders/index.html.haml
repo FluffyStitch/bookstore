@@ -16,7 +16,7 @@
         %a{href: orders_path(filter: :canceled)}= t('status.canceled')
   .visible-xs
     - @orders&.each do |order|
-      .general-cart-item.divider-lg-bottom.pt-0
+      .general-cart-item.divider-lg-bottom.pt-0{ id: "order_#{order.id}" }
         %table.table
           %tr
             %td.col-half
@@ -59,7 +59,7 @@
             %span.in-grey-600= t(:view)
       %tbody
         - @orders&.each do |order|
-          %tr
+          %tr{ id: "order_#{order.id}" }
             %td
               %span.general-order-number= order.uniq_number
             %td
