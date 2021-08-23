@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     end
   end
   resource :quick_registration, only: [:show, :create]
-  resource :checkout, only: [:show, :create, :update, :update_status] do
-    put :update_status
+  resource :checkout, only: [:show, :create, :update, :confirm] do
+    put :confirm
   end
   resources :orders, only: [:index, :show]
 end

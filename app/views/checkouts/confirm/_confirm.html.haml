@@ -10,14 +10,14 @@
       %h3.general-subtitle= t(:shipments)
       %p.general-address
         = @presenter.cart.delivery_type.name
-        = link_to t(:edit), update_status_checkout_path(status: :delivery), method: :put, class: 'general-edit'
+        = link_to t(:edit), confirm_checkout_path(status: :delivery), method: :put, class: 'general-edit'
         %br
         = t(:days_range, min: @presenter.cart.delivery_type.min_days, max: @presenter.cart.delivery_type.max_days)
     .col-sm-3
       %h3.general-subtitle= t(:payment_info)
       %p.general-address
         = t(:mask_number, numbers: @presenter.cart.credit_card.number[-4..-1])
-        = link_to t(:edit), update_status_checkout_path(status: :payment), method: :put, class: 'general-edit'
+        = link_to t(:edit), confirm_checkout_path(status: :payment), method: :put, class: 'general-edit'
         %br
         = @presenter.cart.credit_card.validity
   .visible-xs
@@ -39,4 +39,4 @@
         = render partial: 'checkouts/book', collection: @presenter.cart.order_items, as: :order_item
   = render partial: 'checkouts/price', locals: { presenter: @presenter }
   .text-center
-    = link_to t(:place_order), update_status_checkout_path(status: :complete), method: :put, class:'btn btn-default mb-20'
+    = link_to t(:place_order), confirm_checkout_path(status: :complete), method: :put, class:'btn btn-default mb-20'
