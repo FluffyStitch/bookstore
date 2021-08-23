@@ -19,11 +19,12 @@ RSpec.describe Book::FilterBooks do
     end
 
     describe "when displays with 'Popular first' sort" do
+      let(:order_item) { create(:order_item) }
+      let(:books) { [order_item.book, create(:book)] }
       let(:params) { { sort: :popular } }
 
       it 'displays all books with sort' do
-        sort_books = books.sort_by(&:created_at)
-        expect(filter_books).to eq(sort_books)
+        expect(filter_books).to eq(books)
       end
     end
 

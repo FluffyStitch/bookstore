@@ -5,8 +5,6 @@ class StaticPagesController < ApplicationController
 
   def home
     @latest = BookDecorator.decorate_collection(Book.includes(:authors).last(BOOKS_COUNT))
-    @bestsellers = BookDecorator.decorate_collection(Book.includes(:orders)
-                                .where({ orders: { status: %i[complete in_delivery delivered] } })
-                                .order('order_items.quantity DESC').first(BOOKS_COUNT))
+    @bestsellers = BookDecorator.decorate_collection(Book::Bestsellers.call.first(BOOKS_COUNT))
   end
 end
