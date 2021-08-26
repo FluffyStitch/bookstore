@@ -2,7 +2,7 @@
   %h1.general-title-margin= t(:checkout)
   %ul.steps.list-inline.list-center
     - t(:order).each_with_index do |status, i|
-      - if i == 0
+      - if Order.statuses[@presenter.cart.status] >= i
         %li.step.active
           %span.step-number= i + 1
           %span.step-text.hidden-xs= status
@@ -12,3 +12,4 @@
           %span.step-text.hidden-xs= status
       - unless i == 4
         %li.step-divider
+  = render partial: "checkouts/#{@presenter.cart.status}/#{@presenter.cart.status}"

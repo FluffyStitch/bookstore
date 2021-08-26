@@ -1,0 +1,25 @@
+.general-text-align
+  %p.in-gold-500.font-18= t(:order_summary)
+  %table.general-summary-table
+    %tr
+      %td
+        %p.font-16= t(:sub_total)
+      %td
+        %p.font-16= t(:price, money: presenter.sub_total)
+    %tr
+      %td
+        %p.font-16= t(:coupon)
+      %td
+        %p.font-16= t(:price, money: presenter.discount)
+
+    - if presenter.cart.delivery_type
+      %tr
+        %td
+          %p.font-16= t(:delivery)
+        %td
+          %p.font-16= t(:price, money: presenter.cart.delivery_type.price)
+    %tr
+      %td
+        %strong.font-18= t(:order_total)
+      %td
+        %strong.font-18= t(:price, money: presenter.order_total_with_delivery)

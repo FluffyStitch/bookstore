@@ -12,6 +12,7 @@ import 'featherlight/release/featherlight.min.js'
 import '../src/books'
 import '../src/user'
 import '../src/review'
+import '../src/checkouts'
 require.context('../images', true)
 
 Rails.start()

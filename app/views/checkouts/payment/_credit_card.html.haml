@@ -1,0 +1,15 @@
+%h3.general-subtitle= t(:credit_card)
+= simple_form_for(credit_card, url: checkout_path, method: :put, remote: true, defaults: { input_html: { class: 'form-control' }, label_html: { class: 'control-label input-label' } }, html: { class: 'max-600 mb-80' }) do |f|
+  = f.input :number, required: true, placeholder: t('placeholder.card_number'), input_html: { name: 'order[credit_card][number]'}
+  .row
+    .col-sm-6
+      = f.input :name, required: true, placeholder: t('placeholder.name_card'), input_html: { name: 'order[credit_card][name]'}
+    .col-sm-3
+      = f.input :validity, required: true, placeholder: t(:validity), label: t(:validity), input_html: { name: 'order[credit_card][validity]'}
+    .col-sm-3
+      .relative
+        = f.input :cvv, required: true, placeholder: t(:cvv), label: t(:cvv), input_html: { name: 'order[credit_card][cvv]'}
+        %i.fa.fa-question-circle.general-form-help{ 'data-toggle': 'tooltip', 'data-placement': :bottom, title: t(:hint) }
+  = render partial: 'checkouts/price', locals: { presenter: presenter }
+  .text-center
+    = f.submit t(:save_and_continue), class: 'btn btn-default mb-80'

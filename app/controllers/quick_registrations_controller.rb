@@ -6,13 +6,12 @@ class QuickRegistrationsController < ApplicationController
   def create
     @user = User.new(quick_registrations_params)
     @user.skip_confirmation!
-    if @user.save
-      @user.send_reset_password_instructions
-      Order::TransferCart.new(@user, session).call
-      sign_in @user
-      redirect_to checkout_path, notice: I18n.t('devise.registrations.signed_up')
-    else render :create
-    end
+    return render :create unless @user.save
+
+    @user.send_reset_password_instructions
+    Order::TransferCart.new(@user, session).call
+    sign_in @user
+    redirect_to root_path, notice: I18n.t('devise.registrations.signed_up')
   end
 
   private

@@ -13,7 +13,11 @@ class Order
     end
 
     def user_cart
-      @user.current_order || @user.create_current_order(uniq_number: Array.new(6) { rand(9) }.join)
+      if @user.current_order&.complete? || !@user.current_order
+        @user.create_current_order(uniq_number: Array.new(6) { rand(9) }.join)
+      else
+        @user.current_order
+      end
     end
 
     def guest_cart

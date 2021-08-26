@@ -18,8 +18,10 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def set_forms
-    billing = current_user.billing_address || BillingAddress.new(user_id: current_user.id)
-    shipping = current_user.shipping_address || ShippingAddress.new(user_id: current_user.id)
+    billing = current_user.billing_address || BillingAddress.new(addressable_id: current_user.id,
+                                                                 addressable_type: current_user.class)
+    shipping = current_user.shipping_address || ShippingAddress.new(addressable_id: current_user.id,
+                                                                    addressable_type: current_user.class)
     @billing_address_form = AddressForm.new(billing)
     @shipping_address_form = AddressForm.new(shipping)
   end

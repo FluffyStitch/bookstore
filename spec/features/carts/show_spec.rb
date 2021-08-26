@@ -57,7 +57,7 @@ RSpec.describe 'Cart > Show', type: :feature, js: true do
     describe 'checkout' do
       it 'success' do
         current_page.checkout.click
-        expect(current_page.current_url).to end_with(CheckoutPage.url)
+        expect(current_page.current_url).to end_with(CheckoutAddressPage.url)
       end
     end
   end
