@@ -3,7 +3,9 @@
 class Book
   class Bestsellers
     def self.call
-      Book.popular.left_joins(:orders).where({ orders: { status: %i[complete in_delivery delivered] } })
+      Book.left_joins(order_items: :order).where({ orders: { status: %i[complete in_delivery delivered] } })
+          .group(:id).select('books.*, COUNT(order_items.id) as sold_count').order(sold_count: :desc)
+          .uniq(&:category_id)
     end
   end
 end

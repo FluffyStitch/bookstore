@@ -5,6 +5,6 @@ class StaticPagesController < ApplicationController
 
   def home
     @latest = BookDecorator.decorate_collection(Book.includes(:authors).last(BOOKS_COUNT))
-    @bestsellers = BookDecorator.decorate_collection(Book::Bestsellers.call.first(BOOKS_COUNT))
+    @bestsellers = BookDecorator.decorate_collection(Book::Bestsellers.call)
   end
 end

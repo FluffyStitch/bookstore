@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe Book::FilterBooks do
-  subject(:filter_books) { described_class.new(params).call }
+RSpec.describe Book::FilterSort do
+  subject(:filter_books) { described_class.new(params: params).call }
 
   let(:categories) { create_list(:category, 2) }
   let(:books_with_first_category) { create_list(:book, rand(3..6), category: categories[0]) }

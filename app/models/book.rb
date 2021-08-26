@@ -11,11 +11,4 @@ class Book < ApplicationRecord
 
   include ImageUploader::Attachment(:main_image)
   accepts_nested_attributes_for :images, allow_destroy: true
-
-  scope :newest, -> { order(created_at: :desc) }
-  scope :popular, -> { left_joins(:order_items).group(:id).order('COUNT(order_items.quantity) DESC') }
-  scope :price_asc, -> { order(price: :asc) }
-  scope :price_desc, -> { order(price: :desc) }
-  scope :title_asc, -> { order(title: :asc) }
-  scope :title_desc, -> { order(title: :desc) }
 end

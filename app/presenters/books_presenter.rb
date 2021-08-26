@@ -28,7 +28,7 @@ class BooksPresenter < ApplicationPresenter
   end
 
   def sort_keys
-    Book::FilterBooks::SORT
+    Book::FilterSort::SORT.keys
   end
 
   def choosen_category_class(category)
