@@ -1,0 +1,10 @@
+%p.general-address
+  #{address.first_name} #{address.last_name}
+  %br
+  = address.address
+  %br
+  #{address.city} #{address.zip}
+  %br
+  = ISO3166::Country.find_country_by_alpha2(address.country)
+  %br
+  = t(:phone_number, number: address.phone)

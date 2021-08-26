@@ -28,6 +28,10 @@
                   = link_to category.name, books_path(filter: category)
           - if user_signed_in?
             %li
+              = link_to t('header.settings'), edit_user_registration_path
+            %li
+              = link_to t('header.orders'), orders_path(filter: :complete)
+            %li
               = link_to t('header.log_out'), destroy_user_session_path, method: :delete
           - else
             %li
@@ -50,6 +54,7 @@
                   = t('header.account')
                 %ul.dropdown-menu
                   %li= link_to t('header.settings'), edit_user_registration_path
+                  %li= link_to t('header.orders'), orders_path(filter: :complete)
                   %li.divider{role: "separator"}
                   %li= link_to t('header.log_out'), destroy_user_session_path, method: :delete
             - else

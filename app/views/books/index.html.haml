@@ -7,7 +7,7 @@
           = @presenter.current_sort_name
           %i.fa.fa-angle-down.dropdown-icon.pull-right
         %ul.dropdown-menu
-          - @presenter.sort_keys.each_key do |key|
+          - @presenter.sort_keys.each do |key|
             %li
               %a{href: books_path(sort: key, filter: @presenter.current_filter)}= t("sort.#{key}")
     %ul.list-inline.pt-10.mb-25.mr-240
@@ -42,7 +42,7 @@
         = @presenter.current_sort_name
         %i.fa.fa-angle-down.dropdown-icon.pull-right
       %ul.dropdown-menu
-        - @presenter.sort_keys.each_key do |key|
+        - @presenter.sort_keys.each do |key|
           %li
             %a{href: books_path(sort: key, filter: @presenter.current_filter)}= t("sort.#{key}")
   .mb-120

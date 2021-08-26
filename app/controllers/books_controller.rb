@@ -16,7 +16,7 @@ class BooksController < ApplicationController
   private
 
   def prepared_books
-    Book::FilterBooks.new(permitted_params).call.includes(:authors).decorate
+    Book::FilterSort.new(params: permitted_params).call.includes(:authors).decorate
   end
 
   def permitted_params

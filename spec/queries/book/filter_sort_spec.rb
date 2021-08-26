@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe Book::FilterBooks do
-  subject(:filter_books) { described_class.new(params).call }
+RSpec.describe Book::FilterSort do
+  subject(:filter_books) { described_class.new(params: params).call }
 
   let(:categories) { create_list(:category, 2) }
   let(:books_with_first_category) { create_list(:book, rand(3..6), category: categories[0]) }
@@ -19,11 +19,12 @@ RSpec.describe Book::FilterBooks do
     end
 
     describe "when displays with 'Popular first' sort" do
+      let(:order_item) { create(:order_item) }
+      let(:books) { [order_item.book, create(:book)] }
       let(:params) { { sort: :popular } }
 
       it 'displays all books with sort' do
-        sort_books = books.sort_by(&:created_at)
-        expect(filter_books).to eq(sort_books)
+        expect(filter_books).to eq(books)
       end
     end
 

@@ -7,6 +7,7 @@ en:
     log_out: Log out
     account: My account
     settings: Settings
+    orders: Orders
   footer:
     home: Home
     shop: Shop
@@ -160,3 +161,16 @@ en:
     in_delivery: In Delivery
     delivered: Delivered
     canceled: Canceled
+  buy_now: Buy Now
+  welcome: Welcome to our amazing Bookstore!
+  intro: We pore through hundreds of new books each month and select the four best we can find to share with our members.
+  prev: Previous
+  next: Next
+  waiting: Waiting for processing
+  orders:
+    number: Number
+    completed: Completed at
+    status: Status
+    total: Total
+  my_orders: My Orders
+  view: View
